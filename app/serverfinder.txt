@@ -1,0 +1,175 @@
+package com.bkav.findserver;
+
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import com.bkav.data.Data;
+import com.bkav.data.DataParser;
+import com.bkav.screen.download.LoadingActivity;
+import com.bkav.sync.interfaces.ApplicationService;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+import static com.bkav.sync.interfaces.ApplicationService.serverInformations;
+
+public class ServerFinder extends Thread {
+
+    public static final String REQUEST_TEMPLATE = "{get:devices,filter:[{device:smh}]}";
+    public static final int MAX_COUNT = 5;
+    public static final int RECIVE_PACKAGE = 1;
+
+
+    public ServerFinder(Handler loadingHandler) {
+        this.setDaemon(true);
+        this.loadingHandler = loadingHandler;
+        this.serverInformations = ApplicationService.serverInformations;
+        this.port = ApplicationService.PORT_FIND_SERVER;
+
+        this.handler = new Handler() {
+
+            @Override
+            public void handleMessage(Message message) {
+                if (message.what == RECIVE_PACKAGE) {
+                    DatagramPacket recivePackage = (DatagramPacket) message.obj;
+                    if (recivePackage == null) {
+                        return;
+                    }
+                    processData(recivePackage);
+                }
+            }
+        };
+    }
+
+    // khoi dong ham xu lis message
+
+    @Override
+    public void run() {
+        try {
+            getBroadcastAddress();
+            DatagramPacket sendPacket = new DatagramPacket(ServerFinder.REQUEST_TEMPLATE.getBytes(),
+                    ServerFinder.REQUEST_TEMPLATE.getBytes().length, this.broadcast, this.port);
+
+            int count = 0;
+            while (count < MAX_COUNT) {
+                // check 5 lan
+                try {
+                    if (this.socket == null) {
+                        this.socket = new DatagramSocket();
+                        this.socket.setBroadcast(true);
+                        this.socket.setReuseAddress(true);
+                        this.socket.setSoTimeout(100);
+
+                        if (this.receiveThread != null) {
+                            this.receiveThread.interrupt();
+                        }
+                        this.receiveThread = new ReceiveThread(this.socket, this.handler);
+                        this.receiveThread.start();
+                    }
+                    this.socket.send(sendPacket);
+                    count++;
+                    Thread.sleep(1000);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    count++;
+                    Thread.sleep(1000);
+                }
+            }
+
+            this.close();
+            if (ApplicationService.serverInformations.size() > 0) {
+                Log.e("Loading", "SUCCESS_FIND_SERVER: " );
+                loadingHandler.sendEmptyMessage(LoadingActivity.SUCCESS_FIND_SERVER);
+            } else {
+                Log.e("Loading", "NO_FIND_SERVER: " );
+                loadingHandler.sendEmptyMessage(LoadingActivity.NO_FIND_SERVER);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stopFinder() {
+        this.close();
+        this.interrupt();
+    }
+
+    public ArrayList<ServerInformation> getServerInformations() {
+        Collections.sort(serverInformations, new Comparator<ServerInformation>() {
+            @Override
+            public int compare(ServerInformation serverInformation1, ServerInformation serverInformation2) {
+                return (serverInformation1.getDisplayName().compareTo(serverInformation2.getDisplayName()));
+            }
+        });
+        return serverInformations;
+    }
+
+    private final int port;
+    private DatagramSocket socket = null;
+    private InetAddress broadcast;
+    private ReceiveThread receiveThread;
+
+    private final Handler handler;
+
+    private final ArrayList<ServerInformation> serverInformations;
+    private final Handler loadingHandler;
+
+    private void processData(DatagramPacket recivePackage) {
+        String data = new String(recivePackage.getData());
+        Data info = DataParser.parse(data);
+        Log.e("ServerFinder", data);
+        ServerInformation serverInformation;
+        try {
+            serverInformation = new ServerInformation(info);
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return;
+        }
+        if (!checkServerInformation(serverInformation)) {
+            return;
+        }
+        this.serverInformations.add(serverInformation);
+        ApplicationService.isComplete = true;
+    }
+
+    private boolean checkServerInformation(ServerInformation serverInformation) {
+        if (!"smh".equalsIgnoreCase(serverInformation.getDevice())) {
+            return false;
+        }
+
+        for (ServerInformation information : serverInformations) {
+            if (serverInformation.getFolder().equalsIgnoreCase(information.getFolder())
+                    && serverInformation.getServerIP().equals(information.getServerIP())
+                    && serverInformation.getPort() == information.getPort()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void close() {
+        if (this.socket != null && !this.socket.isClosed()) {
+            this.socket.close();
+        }
+        if (receiveThread != null) {
+            receiveThread.interrupt();
+        }
+        this.socket = null;
+    }
+
+    private void getBroadcastAddress() {
+        try {
+            this.broadcast = InetAddress.getByName("255.255.255.255");
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+    }
+}

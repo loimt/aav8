@@ -1,0 +1,211 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notifyLayout"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <RelativeLayout
+            android:id="@+id/backImAccessSetting"
+            android:layout_width="60dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="3dp"
+                android:src="@drawable/back_icon" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/titleDetailNotifySetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/acessdetect"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/filterIM"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/filter_icon" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_28sdp"
+        android:layout_below="@+id/bar"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_weight="1"
+        android:background="@drawable/conner_layout"
+        android:gravity="left"
+        tools:ignore="RtlHardcoded">
+
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/search_icon" />
+
+        <com.bkav.aiotcloud.view.CustomEditText
+            android:id="@+id/searchNotifySetting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/size_1"
+            android:layout_marginEnd="@dimen/size_1"
+            android:layout_marginBottom="@dimen/size_1"
+            android:layout_toEndOf="@+id/searchIcon"
+            android:background="@drawable/conner_layout"
+            android:gravity="center_vertical"
+            android:hint="@string/search"
+            android:imeOptions="flagNoExtractUi|actionSearch"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textHint"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/text_size_12"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+    <com.baoyz.widget.PullRefreshLayout
+        android:layout_below="@+id/searchLayout"
+        android:id="@+id/pullRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        >
+        <androidx.core.widget.NestedScrollView
+            android:layout_below="@+id/searchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/scrollViewNotifySetting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/searchLayout"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:nestedScrollingEnabled="true"
+                >
+                <RelativeLayout
+                    android:id="@+id/introParam"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:layout_weight="1"
+                    android:gravity="left">
+
+                    <TextView
+                        android:id="@+id/introContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/introNotifySetting"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_9sdp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/accessNotifyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_below="@+id/introParam"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:background="@drawable/conner_bar">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_toStartOf="@+id/swOnOffNotifyAll">
+
+                        <TextView
+                            android:id="@+id/titleNotify"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:lines="1"
+                            android:text="@string/acessdetect"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"/>
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swOnOffNotifyAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:minHeight="48dp"
+                        android:theme="@style/styleSwitch" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/cameraTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_below="@+id/accessNotifyLayout"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:gravity="left">
+
+                    <TextView
+                        android:id="@+id/list_device"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Camera"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layoutListNotifySetting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/cameraTxt"
+                    >
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listNotifySetting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:background="@color/background"
+                        android:clipToPadding="false" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.baoyz.widget.PullRefreshLayout>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.bkav.aiotcloud",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 48,
+      "versionName": "1.2.15",
+      "outputFile": "app-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

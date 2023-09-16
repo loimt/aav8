@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bkav.aiotcloud">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"
+        tools:ignore="ScopedStorage" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PICK" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".application.ApplicationService"
+        android:allowBackup="true"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/icon_foreground"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_foreground"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        android:windowSoftInputMode="adjustResize">
+        <activity
+            android:name=".screen.home.camera.FilterCamera"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+
+        <activity
+            android:name=".screen.home.device.genneralsetting.RegionList"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".screen.home.device.timesetting.DeviceTimeSettingActivity"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity
+            android:name=".screen.home.device.network.NetworkScreen"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"
+            />
+
+        <activity
+            android:name=".screen.notify.detail.ImagesInEvent"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".screen.widget.EventAccessdetectIndays"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".screen.setting.face.historyObject.CalendarBottomSheet"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+
+        <activity
+            android:name=".screen.home.device.timesetting.SetTimeDeviceDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".screen.setting.face.historyObject.DetailDate"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.setting.face.historyObject.ListDates"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.home.camera.OptionEditCam"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".screen.widget.TypeWidget"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".screen.widget.AddWidgetFeature"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".screen.home.optioncam.ManualAdd"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.home.optioncam.EditCamProfile"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.home.optioncam.CheckStatusCam"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.home.optioncam.ScanerQR"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.viewlan.AlertViewLan"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.viewlan.CameraDetailLan"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.viewlan.AddDeviceLan"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.viewlan.ViewOnLan"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.forgetpass.ConfirmNewPass"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.forgetpass.ConfirmOTP"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.forgetpass.ForgetPassword"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.IntroApp"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.P2PMode"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.LanguageSetting"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.home.device.genneralsetting.GenneralInformation"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.notify_setting.DetailNotifySetting"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.NotifySetting"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.widget.EventFaceInDays"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.UserChangePassword"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.user.EditUserProfile"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <service
+            android:name=".fcm.MyFireBaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".screen.SplashScreen"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity
+            android:name=".screen.LoginActiviry"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.MainScreen"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".screen.home.camera.playback.PlaybackActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.customer.FilterCustomer"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+
+        <activity
+            android:name=".screen.home.camera.playback.FilterPlayback"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".view.WrongPassDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.customer.SetTimeDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.notify.SetDateTimeDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.SetNameZone"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.SetSizeFaceDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.customer.FilterTypeCustomer"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.SetSensitivityDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.customer.SetColorDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.SetScheduleDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.SetNationDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.SetTimeDetail"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.home.camera.CameraActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".screen.home.device.DeviceActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.customer.DetailTypeObject"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.customer.ListCustomerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.FaceDetectionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.customer.ListTypeCustomer"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.notify.FilterNotifyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.edit.EditObjectFace"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.customer.AddCustomerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.notify.detail.NotifyDetailScreen"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.setting.face.edit.InfoAIScreen"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".screen.setting.face.SetHourDialog"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.edit.DialogEditAI"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.edit.SetDetectConfigDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+        <activity
+            android:name=".screen.setting.face.ListFaceObjectActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.setting.face.AddOjectFace"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <!--        <activity-->
+        <!--            android:name=".screen.setting.face.customer.TestCropImage"-->
+        <!--            android:configChanges="keyboardHidden|orientation|screenSize"-->
+        <!--            android:theme="@style/AppTheme"-->
+        <!--            android:windowSoftInputMode="stateHidden" />-->
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+    </application>
+
+</manifest>

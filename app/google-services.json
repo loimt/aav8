@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1054899305681",
+    "project_id": "aiotcloud-product",
+    "storage_bucket": "aiotcloud-product.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054899305681:android:711c31a1db6d92836d59f0",
+        "android_client_info": {
+          "package_name": "com.bkav.aiotcloud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054899305681-u1c2hs708th9ehlqktdsgqg4mu8kluv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSA3ulTIxBbCGBT9h7MSl91-oxgvwzWks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054899305681-u1c2hs708th9ehlqktdsgqg4mu8kluv2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1054899305681-76feggvg1csj5bgjpo0sim4doq4febus.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bkav.aiotcloud"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

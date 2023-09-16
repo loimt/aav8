@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_28sdp"-->
+<!--        android:layout_marginTop="@dimen/_5sdp"-->
+<!--        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--        android:id="@+id/searchLayout"-->
+<!--        android:layout_marginBottom="@dimen/_2sdp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:background="@drawable/conner_layout"-->
+<!--        android:gravity="left"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        tools:ignore="RtlHardcoded">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/searchIcon"-->
+<!--            android:layout_width="@dimen/_12sdp"-->
+<!--            android:layout_height="@dimen/_12sdp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="@dimen/_10sdp"-->
+<!--            android:src="@drawable/search_icon" />-->
+
+
+<!--        <com.bkav.aiotcloud.view.CustomEditText-->
+<!--            android:id="@+id/searchEditText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="@dimen/_5sdp"-->
+<!--            android:layout_marginTop="@dimen/size_1"-->
+<!--            android:layout_marginEnd="@dimen/size_1"-->
+<!--            android:layout_marginBottom="@dimen/size_1"-->
+<!--            android:layout_toEndOf="@+id/searchIcon"-->
+<!--            android:background="@drawable/conner_layout"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:hint="@string/search"-->
+<!--            android:imeOptions="flagNoExtractUi|actionSearch"-->
+<!--            android:inputType="text"-->
+<!--            android:singleLine="true"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textColorHint="@color/textHint"-->
+<!--            android:textSize="@dimen/text_size_12"-->
+<!--            android:textCursorDrawable="@null" />-->
+<!--    </RelativeLayout>-->
+
+    <com.bkav.aiotcloud.view.GridviewCustom
+
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:focusable="true"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="15dp" />
+
+</RelativeLayout>

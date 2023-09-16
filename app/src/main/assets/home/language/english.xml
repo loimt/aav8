@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language key="english">
+    <!-- SIMPLE TEXT -->
+    <item description="" key="app_name" value="AI View Cloud" />
+    <item description="" key="user" value="Username" />
+    <item description="" key="password" value="Password" />
+    <item description="" key="hintLogin" value="Use your number phone to  <br /> login system" />
+    <item description="" key="forgetPass" value="Forget password" />
+    <item description="" key="viewOnLAN" value="Live view on LAN" />
+    `
+    <item description="" key="login" value="Login" />
+    <item description="" key="languageLogin" value="EN" />
+    <item description="" key="camera" value="Camera" />
+    <item description="" key="groud" value="Groud" />
+    <item description="" key="title_ptz" value="PTZ control" />
+    <item description="" key="devices" value="Devices" />
+    <item description="" key="p2p_mode" value="P2P mode" />
+    <item description="" key="fast_connection" value="Fast connection" />
+    <item description="" key="title_setting_cam" value="Camera setting" />
+    <item description="" key="select_type_warning" value="Select notification type" />
+    <item description="" key="popup" value="Popup" />
+    <item description="" key="sound" value="Sound" />
+    <item description="" key="blink" value="Flicker" />
+    <item description="" key="done" value="Done" />
+    <item description="" key="edit_infor" value="Edit information" />
+    <item description="" key="no_infor" value="No information" />
+
+    <item description="" key="title_setting_image" value="Image setting" />
+    <item description="" key="title_setting_white_balance" value="White balance" />
+    <item description="" key="title_setting_day_night" value="Night mode" />
+    <item description="" key="title_setting_rotate" value="Setting mirror" />
+    <item description="" key="title_setting_video" value="Video setting" />
+    <item description="" key="title_setting_focus" value="Focus" />
+    <item description="" key="title_setting_ptz" value="PTZ control" />
+    <item description="" key="title_setting_display" value="Display" />
+    <item description="" key="active" value="Active" />
+
+    <item description="" key="camera_setting" value="AI configuration" />
+    <item description="" key="setting_parameter" value="Parameter Setting" />
+    <item description="" key="ai_setting" value="AI Setting" />
+    <item description="" key="location" value="Location" />
+    <item description="" key="ai_state" value="AI State" />
+    <item description="" key="manage_customer" value="Profile management" />
+    <item description="" key="manage_type_customer" value="Profile type management" />
+    <item description="" key="setting" value="Setting" />
+    <item description="" key="setting_ai" value="AI Setting" />
+    <item description="" key="camera_off_line" value="Camera's offline!" />
+
+    <item description="" key="face_customer" value="Face recognition" />
+
+    <item description="" key="intrusion_detect" value="Intrusion detection" />
+    <item description="" key="fire_detect" value="Fire detect" />
+    <item description="" key="lable_detect" value="License plate recognition" />
+
+    <item description="" key="activated" value="Active" />
+    <item description="" key="inactivated" value="Inactive" />
+    <item description="" key="list_ai_object" value="Ai configuration" />
+    <item description="" key="face_recognize" value="Face recognition" />
+
+    <item description="" key="step1" value="Select camera" />
+    <item description="" key="step2" value="Zone creation" />
+    <item description="" key="step3" value="Option" />
+
+    <item description="" key="name_zone" value="Zone name" />
+    <item description="" key="hint_name_zone" value="Enter zone name" />
+
+    <item description="" key="cancel" value="Cancel" />
+    <item description="" key="empty_name_zone" value="Name zone's not empty!" />
+
+    <item description="" key="toast_short_point" value="You must have at least 3 points to create a circle!" />
+    <item description="" key="toast_not_save_polygon" value="You haven't save polygon" />
+    <item description="" key="toast_not_choose_cam" value="You haven't choose camera" />
+    <item description="" key="sensitivity" value="Sensitivity" />
+    <item description="" key="size_face" value="Face size" />
+    <item description="" key="cameras" value="Cameras" />
+    <item description="" key="feature_improving" value="The feature are improving" />
+    <item description="" key="edit_infor" value="Edit" />
+    <item description="" key="type_object" value="Profile type management" />
+    <item description="" key="playback" value="Playback" />
+
+    <item description="" key="add_new" value="Add" />
+
+    <item description="" key="high" value="High" />
+    <item description="" key="low" value="Low" />
+    <item description="" key="veryHigh" value="Very high" />
+    <item description="" key="veryLow" value="Very low" />
+
+    <item description="" key="big" value="Big" />
+    <item description="" key="medium" value="Medium" />
+    <item description="" key="verySmall" value="Very Small" />
+    <item description="" key="veryBig" value="Very Big" />
+    <item description="" key="small" value="Small" />
+    <item description="" key="large" value="Large" />
+
+    <item description="" key="add_schedule" value="Add schedule" />
+    <item description="" key="schedule_active" value="Schedule" />
+    <item description="" key="setting_handmade" value="Manual" />
+    <item description="" key="alway_active" value="Always" />
+
+    <item description="" key="time" value="Time" />
+    <item description="" key="repeat" value="Repeat" />
+
+    <item description="" key="mon" value="Mon" />
+    <item description="" key="tue" value="Tue" />
+    <item description="" key="wed" value="Wed" />
+    <item description="" key="thu" value="Thu" />
+    <item description="" key="fri" value="Fri" />
+    <item description="" key="sat" value="Sat" />
+    <item description="" key="sun" value="Sun" />
+
+    <item description="" key="add_config_success" value="Config Success" />
+
+    <item description="" key="update_user_success" value="Update userprofile success" />
+    <item description="" key="update_user_fail" value="Update userprofile fail" />
+    <item description="" key="update_userTime_fail" value="Birthday's not valid" />
+
+    <item description="" key="changePass_user_success" value="Change password success" />
+    <item description="" key="changePass_user_fail" value="Change password fail" />
+    <item description="" key="changePass_user_notSame" value="Password confirm is not same" />
+
+
+    <item description="" key="forget_set_time" value="You forget to set time" />
+    <item description="" key="forget_choose_day" value="You forget choose day" />
+
+    <item description="" key="edit" value="Edit" />
+    <item description="" key="edit_ai_info" value="Edit camera AI info" />
+    <item description="" key="delete" value="Delete" />
+    <item description="" key="delete_ai_info" value="Delete camera AI info" />
+    <item description="" key="forget_input_time" value="You forget input time" />
+    <item description="" key="list_customer" value="Profile management" />
+
+    <item description="" key="male" value="Male" />
+    <item description="" key="female" value="Female" />
+    <item description="" key="other" value="Other" />
+    <item description="" key="other" value="Other" />
+
+    <item description="" key="save" value="Save" />
+
+    <item description="" key="detail_event" value="Event detail" />
+    <item description="" key="list_event" value="List event" />
+    <item description="" key="notification" value="Notification" />
+    <item description="" key="er_empty_name" value="Full name cannot be empty" />
+
+    <item description="" key="year_ago" value="year ago" />
+    <item description="" key="month_ago" value="month ago" />
+    <item description="" key="week_ago" value="week ago" />
+    <item description="" key="day_ago" value="day ago" />
+    <item description="" key="hour_ago" value="hour ago" />
+    <item description="" key="minutes_ago" value="minutes ago" />
+    <item description="" key="second_ago" value="second ago" />
+    <item description="" key="just_now" value="Just now" />
+
+
+    <item description="" key="get_list_notifysetting_sucess"
+        value="Get list notify setting success" />
+    <item description="" key="get_list_notifysetting_fail" value="Get list notify setting fail" />
+    <item description="" key="update_notifysetting_sucess" value="Update notify setting success" />
+    <item description="" key="update_notifysetting_fail" value="Update notify setting fail" />
+
+    <item description="" key="userprofile" value="Setting" />
+    <item description="" key="fullname" value="Full name" />
+    <item description="" key="hint_fullname" value="Enter full name" />
+
+    <item description="" key="date_of_birth" value="Date of birth" />
+    <item description="" key="hint_date_of_birth" value="Enter date of bith" />
+
+    <item description="" key="hint_email" value="Enter email" />
+
+
+    <item description="" key="gender" value="Gender" />
+    <item description="" key="phone_number" value="Phone number" />
+    <item description="" key="hint_phone_number" value="Enter phone number" />
+    <item description="" key="address" value="Address" />
+
+    <item description="" key="hint_address" value="Enter address" />
+
+    <item description="" key="change_password" value="Change password" />
+    <item description="" key="now_password" value="Now password" />
+    <item description="" key="hint_now_password" value="Enter current password" />
+
+    <item description="" key="new_password" value="New password" />
+
+    <item description="" key="hint_new_password" value="Enter new password" />
+
+    <item description="" key="confirm_new_password" value="Confirm password" />
+    <item description="" key="hint_confirm_password" value="Enter confirm password" />
+
+    <item description="" key="help" value="Help" />
+    <item description="" key="intro_app" value="About" />
+
+    <item description="" key="language" value="Language" />
+
+    <item description="" key="notify_setting" value="Notification setting" />
+    <item description="" key="accessdetect" value="Intrusion detection" />
+    <item description="" key="licenseplate" value="License plate recognition" />
+    <item description="" key="customerrecognize" value="Face recognition" />
+    <item description="" key="persondetection" value="Persons detect" />
+
+    <item description="" key="firedetect" value="Fire detect" />
+    <item description="" key="notify" value="Notify" />
+    <item description="" key="introNotifySetting"
+        value="The notification settings feature helps you customize your device for your personal needs to receive notifications from your camera" />
+
+
+    <item description="" key="logout" value="Log out" />
+
+    <item description="" key="make_sure_logout" value="Are you sure to log out ?" />
+    <item description="" key="confirm" value="Confirm" />
+
+    <item description="" key="version" value="Version" />
+    <item description="" key="version_software" value="Software version" />
+    <item description="" key="search" value="Search" />
+
+    <item description="" key="VN_language_setting" value="Vietnamese" />
+    <item description="" key="Eng_language_setting" value="English" />
+    <item description="" key="all" value="All" />
+    <item description="" key="filter" value="Filter" />
+    <item description="" key="activing" value="Active" />
+    <item description="" key="inactive" value="Inactive" />
+    <item description="" key="status" value="Status" />
+
+    <item description="" key="note_account_forgetpass"
+        value="Enter your account information to reset your password" />
+    <item description="" key="account" value="Account" />
+    <item description="" key="account_hint" value="Enter account" />
+
+    <item description="" key="next" value="Next" />
+    <item description="" key="wrong_format_phone" value="Wrong phone format" />
+    <item description="" key="wrong_format_email" value="Wrong email format" />
+    <item description="" key="wrong_account" value="Email or phone number hasn't been registered" />
+    <item description="" key="enter_otp_code" value="Enter OTP code" />
+    <item description="" key="alert_otp_code" value="OTP will expired after " />
+    <item description="" key="seconds" value=" seconds" />
+    <item description="" key="notify_OTP_code" value="OTP sent to your phone" />
+    <item description="" key="wrong_OTP" value="Wrong OTP code" />
+    <item description="" key="wrong_resend_OTP" value="Resend OTP fail" />
+    <item description="" key="input_new_password" value="Enter new password" />
+    <item description="" key="alert_notsame" value="Password confirm is not same" />
+    <item description="" key="note_pass"
+        value="Password must be 8 ~ 30 characters including letters and numbers" />
+    <item description="" key="weak_pass" value="Weak" />
+    <item description="" key="medium_pass" value="Medium" />
+    <item description="" key="strong_pass" value="Strong" />
+    <item description="" key="send_new_pass" value="Update new password" />
+    <item description="" key="reset_pass_fail" value="Update new password fail" />
+    <item description="" key="reset_pass_success" value="Update new password success" />
+    <item description="" key="not_empty_account" value="Information cannot be blank" />
+    <item description="" key="expired_OTP" value="OTP expired" />
+    <item description="" key="resend_OTP" value="Resend OTP" />
+    <item description="" key="datetime_picker" value="en" />
+    <item description="" key="name_object" value="Name object" />
+    <item description="" key="nation" value="Nation" />
+    <item description="" key="vietnam" value="Vietnam" />
+    <item description="" key="usa" value="USA" />
+    <item description="" key="malaysia" value="Malaysia" />
+
+
+    <item description="" key="empty_name_object" value="You haven't enter object name" />
+    <item description="" key="select_sample_image" value="Select sample image" />
+    <item description="" key="code_object" value="Object code" />
+    <item description="" key="input_code_object" value="Enter object code" />
+    <item description="" key="email" value="email" />
+    <item description="" key="sex" value="Gender" />
+    <item description="" key="comfirm_delete_customer"
+        value="Are you sure to delete this customer ?" />
+    <item description="" key="note" value="Note" />
+    <item description="" key="note_input" value="Enter note" />
+    <item description="" key="content_access_detect" value="Intrusion detection at %s in %s" />
+
+    <item description="" key="ai_fr_content_format" value= "%s - %s visit %s at %s" />
+    <item description="" key="ai_fr_unknow_format" value="New Face ID detection visit %s at %s" />
+    <item description="" key="face_id_list" value="Face ID list" />
+    <item description="" key="instrusion_content_format" value= "Intrusion detection at %s in %s" />
+    <item description="" key="device_content_format" value= "%s is %s" />
+    <item description="" key="manage_face" value="Face ID management" />
+    <item description="" key="manage_face_group" value="Face ID group management" />
+    <item description="" key="name_device_cannot_empty" value= "Device name cannot empty" />
+    <item description="" key="time_setting" value="Time Setting" />
+    <item description="" key="date_and_time" value="Date and time" />
+    <item description="" key="automatic_sync" value="Automatic sync" />
+    <item description="" key="time_zone" value="Time zone" />
+
+    <item description="" key="list_device" value= "Device list" />
+    <item description="" key="device_name" value= "Device name" />
+    <item description="" key="view_lan" value= "Live view via LAN" />
+    <item description="" key="alert_Lan" value= "Make sure your Mobile and device are on the same LAN or your Mobile connects to your device's AP hotspot." />
+    <item description="" key="alert_account_lan" value= "Please enter username and password. The password is the security code printed on device's stamp" />
+    <item description="" key="pass_hint" value= "Enter password" />
+    <item description="" key="ip_address" value= "IP address" />
+    <item description="" key="hint_ip_address" value= "Enter IP address" />
+    <item description="" key="alert_IP_address" value= "IP's not empty" />
+
+    <item description="" key="port" value= "Port" />
+    <item description="" key="port_hint" value= "Enter port" />
+    <item description="" key="alert_port" value= "Port's not empty" />
+    <item description="" key="alert_pass" value= "Password's not empty" />
+    <item description="" key="enter_device_lan" value= "Enter device information" />
+    <item description="" key="account_alert" value= "Account's not empty" />
+    <item description="" key="get_cam_lan_fail" value= "Get information device fail" />
+    <item description="" key="deviceactivity" value= "Device status" />
+
+    <item description="" key="config_cam_error" value= "Config cam fail" />
+    <item description="" key="allow_notify" value= "Notification allow" />
+
+    <item description="" key="period_time" value= "Period" />
+    <item description="" key="ai_list" value= "AI List" />
+    <item description="" key="config" value= "Config" />
+
+    <item description="" key="camera_off" value= "is offline" />
+    <item description="" key="camera_on" value= "is online" />
+    <item description="" key="at" value= " at " />
+    <item description="" key="in" value= " in " />
+
+    <item description="" key="check_cam_status" value= "Check camera status" />
+    <item description="" key="complete" value= "Complete" />
+    <item description="" key="camera_name" value= "Camera name" />
+    <item description="" key="camera_name_hint" value= "Enter camera name" />
+    <item description="" key="region" value= "Region" />
+    <item description="" key="region_hint" value= "Choose region" />
+    <item description="" key="manual_add" value= "Manual" />
+    <item description="" key="note_manual_add" value= "Enter the serial code information printed on the device into the system" />
+    <item description="" key="note_manual_hint" value= "Enter serial number" />
+    <item description="" key="valid_camera" value= "Valid camera" />
+    <item description="" key="invalid_serial" value= "Invalid serial" />
+
+    <item description="" key="scan_QR" value= "Scan QR code" />
+    <item description="" key="scan_lan" value= "Scan Lan" />
+
+    <item description="" key="invalid_serial" value= "Invalid serial" />
+    <item description="" key="serial_number" value= "Serial number" />
+
+
+    <item description="" key="contrast" value= "Contrast" />
+    <item description="" key="brightness" value= "Brightness" />
+    <item description="" key="sharpness" value= "Sharpness" />
+    <item description="" key="saturation" value= "Saturation" />
+
+    <item description="" key="rotation" value= "Rotation" />
+    <item description="" key="mirror" value= "Mirror" />
+
+    <item description="" key="rotation" value= "Rotation" />
+    <item description="" key="mirror" value= "Mirror" />
+
+    <item description="" key="resolution" value= "Resolution" />
+    <item description="" key="frame_rate" value= "Frame rate" />
+    <item description="" key="display_time" value= "Time display" />
+    <item description="" key="display_name" value= "Name display" />
+    <item description="" key="text_size" value= "Text size" />
+    <item description="" key="choose_color" value= "Text color" />
+    <item description="" key="select_color" value="Select color" />
+    <item description="" key="description" value="Description" />
+    <item description="" key="add_config_un_success" value="Configuration failed " />
+    <item description="" key="stranger_detect" value= "Stranger detected" />
+    <item description="" key="zone_list" value= "List zone" />
+
+
+    <item description="" key="select_channel" value= "Select channel" />
+    <item description="" key="bitrate_type" value= "Bitrate" />
+    <item description="" key="bitrate" value= "Bit-rate" />
+
+    <item description="" key="video_quality" value= "Video quality" />
+
+    <item description="" key="profile_type_name" value= "Name" />
+    <item description="" key="profile_type_name_hint" value= "Enter profile type name" />
+    <item description="" key="profile_type_color" value= "Select color" />
+    <item description="" key="profile_type_describe" value= "Description" />
+    <item description="" key="profile_type_describe_hint" value= "Enter description" />
+    <item description="" key="profile_type_notify" value= "Select notification type" />
+    <item description="" key="profile_type_sound" value= "Sound" />
+    <item description="" key="profile_type_flicker" value= "Flicker" />
+
+    <item description="" key="time_warning" value= "Time warning" />
+    <item description="" key="edit_camprofile" value= "Edit camera profile" />
+    <item description="" key="header_lang" value= "en" />
+    <item description="" key="make_sure_delete_cam" value="Are you sure delete camera?" />
+
+    <item description="" key="widget_general_information" value="General information" />
+    <item description="" key="widget_general_content" value="Statistic total event detected in current day." />
+    <item description="" key="widget_last_event" value="Lastest event" />
+    <item description="" key="widget_last_event_content" value="Display detail latest event detected." />
+
+    <item description="" key="general_information" value="General information" />
+    <item description="" key="time_settings" value="Time settings" />
+    <item description="" key="network_settings" value="Network settings" />
+    <item description="" key="device_channels" value="Device channels" />
+    <item description="" key="storage" value="Storage" />
+    <item description="" key="restart" value="Restart" />
+
+</language>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screen.home.optioncam.ScanerQR"
+    android:background="@drawable/background"
+    >
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/backButton"
+        android:layout_width="60dp"
+        android:layout_height="@dimen/_30sdp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            android:src="@drawable/back_icon" />
+    </RelativeLayout>
+    <com.budiyev.android.codescanner.CodeScannerView
+        app:autoFocusButtonPosition="bottomStart"
+        app:flashButtonPosition="bottomEnd"
+        android:id="@+id/scanner_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        app:frameColor="@color/mainColor">
+    </com.budiyev.android.codescanner.CodeScannerView>
+
+</RelativeLayout>

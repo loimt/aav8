@@ -1,0 +1,22 @@
+{
+  "apiHost": "https://ppbs.aiview.ai:30004/p2p/api/v1",
+  "getCredentialHost":"",
+  "getTokenHost": "",
+  "auth": {
+    "type": "app",
+    "client_id": "61ceccdec7d895918a2f530f",
+    "client_secret": "yCJIDAbAiOSQTZDTQfW8icPp860fze"
+  },
+  "appIdentified": "com.bkav.bai.bridge.sample.app",
+  "isSample": true,
+  "env": {
+    "signaling_peer_id": "1",
+    "state_message": "",
+    "api_version": "1.0.2.1",
+    "reference_id": "AVC Sample Android App",
+    "log_level": "debug"
+  },
+  "transport": {
+    "protocol_supported": ["tcp", "mqtt", "wss"]
+  }
+}

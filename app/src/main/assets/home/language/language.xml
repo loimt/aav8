@@ -1,0 +1,4 @@
+﻿<languages>
+	<language value="English" default="0" source="english.xml"/> 
+	<language value="Tiếng Việt" default="1" source="vietnamese.xml"/> 
+</languages>

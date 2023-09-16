@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/barColor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/node_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:id="@+id/arrow_img"
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="@dimen/_8sdp"
+            android:src="@drawable/arrow_filter"
+            />
+        <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:id="@+id/node_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:text="Tree Node" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="@dimen/_12sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:buttonTint="@color/transparent"
+        android:background="@drawable/checkbox_selector"
+
+        />
+    <View
+        android:layout_marginStart="@dimen/_13sdp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/grayTitle"></View>
+</RelativeLayout>

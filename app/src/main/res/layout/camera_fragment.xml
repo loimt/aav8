@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+<!--   <com.bkav.aiotcloud.view.GridviewCustom-->
+
+<!--       android:id="@+id/gridview"-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="match_parent"-->
+<!--       android:layout_marginStart="@dimen/_10sdp"-->
+<!--       android:layout_marginTop="5dp"-->
+<!--       android:layout_marginEnd="@dimen/_10sdp"-->
+<!--       android:adjustViewBounds="true"-->
+<!--       android:clickable="true"-->
+<!--       android:clipToPadding="false"-->
+<!--       android:focusable="true"-->
+<!--       android:gravity="center"-->
+<!--       android:horizontalSpacing="10dp"-->
+<!--       android:numColumns="auto_fit"-->
+<!--       android:paddingTop="10dp"-->
+<!--       android:paddingBottom="15dp"-->
+<!--       android:stretchMode="columnWidth"-->
+<!--       android:verticalSpacing="15dp" />-->
+   <com.baoyz.widget.PullRefreshLayout
+       android:id="@+id/pullRefresh"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/gridview"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_centerVertical="true"
+          android:layout_marginStart="@dimen/_3sdp"
+          android:clickable="true"
+          android:focusable="true"
+          android:gravity="center"
+          android:stretchMode="columnWidth" />
+
+   </com.baoyz.widget.PullRefreshLayout>
+
+
+
+</RelativeLayout>

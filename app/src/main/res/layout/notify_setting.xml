@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screen.user.NotifySetting">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <RelativeLayout
+                android:id="@+id/backButtonNotifySetting"
+                android:layout_width="60dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="3dp"
+                    android:src="@drawable/back_icon" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/titleNotifySetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/notifySetting"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/accessNotifyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/bar"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:background="@drawable/conner_retangle">
+
+            <RelativeLayout
+                android:id="@+id/backgroudAccess"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp">
+
+                <ImageView
+                    android:id="@+id/avaterImageAccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/intrusion_notify_setting" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toStartOf="@+id/nextAccess"
+                android:layout_toEndOf="@+id/backgroudAccess">
+
+                <TextView
+                    android:id="@+id/titleNotifyAcess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:lines="1"
+                    android:text="@string/acessdetect"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/nextAccess"
+                android:layout_width="@dimen/_7sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/next_icon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/licenNotifyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/accessNotifyLayout"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:background="@drawable/conner_retangle">
+
+            <RelativeLayout
+                android:id="@+id/backgroudLicen"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp">
+
+                <ImageView
+                    android:id="@+id/avaterImageLicen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/license_plate_recognition_notify_setting" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toStartOf="@+id/nextLicen"
+                android:layout_toEndOf="@+id/backgroudLicen">
+
+                <TextView
+                    android:id="@+id/titleNotifyLicen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:lines="1"
+                    android:text="@string/licenseplate"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/nextLicen"
+                android:layout_width="@dimen/_7sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/next_icon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/customerNotifyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/licenNotifyLayout"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:background="@drawable/conner_retangle">
+
+            <RelativeLayout
+
+                android:id="@+id/backgroudCustomerNotify"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp">
+
+                <ImageView
+                    android:id="@+id/avaterImageCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/face_recognite_notfy_setting" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toStartOf="@+id/nextCustomer"
+                android:layout_toEndOf="@+id/backgroudCustomerNotify">
+
+                <TextView
+                    android:id="@+id/titleNotifyCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:lines="1"
+                    android:text="@string/customerrecognize"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/nextCustomer"
+                android:layout_width="@dimen/_7sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/next_icon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fireNotifyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/customerNotifyLayout"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:background="@drawable/conner_retangle">
+
+            <RelativeLayout
+                android:id="@+id/backgroudFireDetect"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp">
+
+                <ImageView
+                    android:id="@+id/avaterImageFire"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/fire_icon_notify_setting" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toStartOf="@+id/nextFire"
+                android:layout_toEndOf="@+id/backgroudFireDetect">
+
+                <TextView
+                    android:id="@+id/titleNotifyFireDetect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:lines="1"
+                    android:text="@string/fireDetect"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/nextFire"
+                android:layout_width="@dimen/_7sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/next_icon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/deviceNotifyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/fireNotifyLayout"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:background="@drawable/conner_retangle">
+
+            <RelativeLayout
+                android:layout_centerVertical="true"
+                android:id="@+id/backgroudDeviceActivity"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="10dp">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/avaterDeviceActivity"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_17sdp"
+                    android:layout_centerInParent="true"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/camera_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toStartOf="@+id/nextDevice"
+                android:layout_toEndOf="@+id/backgroudDeviceActivity">
+
+                <TextView
+                    android:id="@+id/titleNotifyDeviceActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:lines="1"
+                    android:text="@string/fireDetect"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/nextDevice"
+                android:layout_width="@dimen/_7sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/next_icon" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

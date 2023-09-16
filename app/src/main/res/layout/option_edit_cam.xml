@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="2"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_100sdp"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/conner_bar"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/editCam"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/edit_icon" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/editCam"
+            android:id="@+id/editCamLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/editCamText"
+                android:textColor="@color/white"
+                android:text="Edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/noteEditCam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editCamText"
+                android:text="Edit device information"
+                android:textColor="@color/grayTitle"
+                android:textSize="@dimen/_8sdp" />
+
+            <View
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/grayTitle"
+                android:layout_below="@+id/noteEditCam"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/deleteCamImage"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/delete_icon" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/deleteCamImage"
+            android:id="@+id/deleteCamLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/deleteCamText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textColor="@color/red" />
+
+            <TextView
+                android:id="@+id/noteDeleteCam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deleteCamText"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Delete device from the system"
+                android:textColor="@color/grayTitle"
+                android:textSize="@dimen/_8sdp" />
+
+            <View
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/grayTitle"
+                android:layout_below="@+id/noteDeleteCam"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

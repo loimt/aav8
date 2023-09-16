@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_530sdp"
+    android:background="@drawable/bottom_sheet_background"
+    >
+    <RelativeLayout
+        android:layout_margin="@dimen/_10sdp"
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_28sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_weight="1"
+        android:background="@drawable/conner_layout"
+        android:gravity="left"
+        tools:ignore="RtlHardcoded">
+
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/search_icon" />
+
+        <com.bkav.aiotcloud.view.CustomEditText
+            android:id="@+id/searchCam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/size_1"
+            android:layout_marginEnd="@dimen/size_1"
+            android:layout_marginBottom="@dimen/size_1"
+            android:layout_toEndOf="@+id/searchIcon"
+            android:background="@drawable/conner_layout"
+            android:gravity="center_vertical"
+            android:hint="@string/search"
+            android:imeOptions="flagNoExtractUi|actionSearch"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textHint"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/text_size_12"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/searchLayout"
+        android:id="@+id/container_treeview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_480sdp"/>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/confirmFilterCam"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/conner_button_login"
+            android:text="@string/confirmPass"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

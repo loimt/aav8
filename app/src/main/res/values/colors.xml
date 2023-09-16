@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="yeallow">#ffff00</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="background">#212529</color>
+    <color name="backgroundLanguage">#2B2F33</color>
+    <color name="mainColor">#FD7B38</color>
+    <color name="blue_light">#0878f6</color>
+    <color name="textHint">#818181</color>
+    <color name="colorForcus">#DFB069</color>
+    <color name="titleNotice">#FD413C</color>
+    <color name="barColor">#2B2F33</color>
+    <color name="blue_light_onclick">#320878f6</color>
+    <color name="backgroundBar">#404447</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="colorOverlay">#78ffffff</color>
+    <color name="grayLine">#cbcbcb</color>
+    <color name="gray">#333333</color>
+    <color name="grayTitle">#706f75</color>
+    <color name="gray_light">#e8e8e8</color>
+    <color name="transparentColor">#A6FD7B38</color>
+    <color name="backgroud_splash">#E5E5E5</color>
+    <color name="corner_cancel">#6D6D6D</color>
+    <color name="corner_confirm">#FF5A4C</color>
+
+
+
+    <color name="frg1Color">#FEBE29</color>
+    <color name="frg2Color">#3395FF</color>
+    <color name="frg3Color">#F6437B</color>
+    <color name="txtBGColor">#9FA8DA</color>
+    <color name="text_color_hint">#c7c5c5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="green">#7CFC00</color>
+    <color name="stateActive">#4AA541</color>
+    <color name="red">#FD413C</color>
+    <color name="logout_tx">#FD413C</color>
+    <color name="text_shadow">#7F000000</color>
+
+    <color name="pede_color">#4aa541</color>
+    <color name="licen_color">#3bb7fd</color>
+    <color name="fide_color">#fd413c</color>
+    <color name="intru_color">#fd7b38</color>
+    <color name="fade_color">#e0a818</color>
+</resources>

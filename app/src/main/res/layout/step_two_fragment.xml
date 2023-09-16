@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_100sdp"
+      android:id="@+id/cameraLayout">
+
+      <org.webrtc.SurfaceViewRenderer
+          android:id="@+id/camera_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+
+      <ImageView
+          android:id="@+id/thumImage"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+
+      <ProgressBar
+          android:id="@+id/progressBar"
+          style="?android:attr/progressBarStyleLarge"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_centerInParent="true"
+          android:indeterminateTint="@color/mainColor"
+          android:layout_marginTop="20dp"
+          android:max="3"
+          android:progress="100" />
+
+
+    <com.bkav.aiotcloud.view.PaintView
+        android:id="@+id/touchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:id="@+id/bar"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_30sdp"
+      android:layout_below="@+id/cameraLayout"
+      android:background="@color/barColor">
+
+    <TextView
+        android:id="@+id/cameraName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginBottom="3dp"
+        android:maxLines="2"
+        android:text="@string/camera"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:padding="@dimen/_3sdp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_toEndOf="@id/cameraName"
+        android:src="@drawable/info_icon" />
+
+    <RelativeLayout
+        android:id="@+id/layoutSave"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true">
+
+      <ImageView
+          android:layout_width="@dimen/_15sdp"
+          android:layout_height="@dimen/_15sdp"
+          android:layout_centerInParent="true"
+          android:layout_marginStart="@dimen/_15sdp"
+          android:src="@drawable/save_icon" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutRepaint"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@+id/layoutSave">
+
+      <ImageView
+          android:layout_width="@dimen/_15sdp"
+          android:layout_height="@dimen/_15sdp"
+          android:layout_centerInParent="true"
+          android:layout_marginStart="@dimen/_15sdp"
+          android:src="@drawable/reload_icon" />
+    </RelativeLayout>
+  </RelativeLayout>
+
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:layout_below="@+id/bar"
+      android:layout_marginStart="@dimen/_5sdp"
+      android:layout_marginEnd="@dimen/_5sdp">
+
+    <TextView
+        android:id="@+id/listZoneName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginBottom="3dp"
+        android:maxLines="2"
+        android:text="@string/listZone"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listZone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listZoneName"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/background"
+        android:clipToPadding="false" />
+  </RelativeLayout>
+</RelativeLayout>
