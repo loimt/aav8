@@ -3,12 +3,9 @@ package com.bkav.aiotcloud.screen.notify;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -17,7 +14,6 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -36,9 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.entity.CameraItem;
-import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.screen.MainScreen;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,11 +54,11 @@ public class FilterNotifyActivity extends AppCompatActivity {
     private TextView listAITitle;
     private TextView accessTitle;
     private TextView customerTitle;
-    private TextView fireTitle;
+    private TextView licenseTx;
     private TextView statusDeviceTitle;
     private RadioButton accessCheck;
     private RadioButton customerCheck;
-    private RadioButton fireCheck;
+    private RadioButton licenseCheck;
     private RadioButton statusDeviceCheck;
     private TextView listDeciveTitle;
     private RecyclerView listDevice;
@@ -74,7 +68,7 @@ public class FilterNotifyActivity extends AppCompatActivity {
     private Button confirm;
     private final String accessDetect = "3";
     private final String faceRecog = "2";
-    private final String fireDetect = "4";
+    private final String licenseDetect = "6";
     private final String deviceActivity = "7";
     private final String reload = "-1";
     private ProgressBar progressBar;
@@ -89,11 +83,11 @@ public class FilterNotifyActivity extends AppCompatActivity {
         this.listAITitle = findViewById(R.id.listAITitle);
         this.accessTitle = findViewById(R.id.accessTx);
         this.customerTitle = findViewById(R.id.customerRecogTx);
-        this.fireTitle = findViewById(R.id.fireDetectTx);
+        this.licenseTx = findViewById(R.id.licenseTx);
         this.statusDeviceTitle = findViewById(R.id.statusDeviceTx);
         this.accessCheck = findViewById(R.id.accessCheck);
         this.customerCheck = findViewById(R.id.customerCheck);
-        this.fireCheck = findViewById(R.id.fireCheck);
+        this.licenseCheck = findViewById(R.id.licenseCheck);
         this.statusDeviceCheck = findViewById(R.id.statusDeviceCheck);
         this.listDeciveTitle = findViewById(R.id.listDeviceTx);
         this.listDevice = findViewById(R.id.listDevice);
@@ -106,7 +100,7 @@ public class FilterNotifyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -146,7 +140,7 @@ public class FilterNotifyActivity extends AppCompatActivity {
         this.listAITitle.setText(LanguageManager.getInstance().getValue("ai_list"));
         this.accessTitle.setText(LanguageManager.getInstance().getValue("accessdetect"));
         this.customerTitle.setText(LanguageManager.getInstance().getValue("customerrecognize"));
-        this.fireTitle.setText(LanguageManager.getInstance().getValue("firedetect"));
+        this.licenseTx.setText(LanguageManager.getInstance().getValue("licenseplate"));
         this.statusDeviceTitle.setText(LanguageManager.getInstance().getValue("deviceactivity"));
         this.startTimeTx.setText(ApplicationService.startTime);
         this.endTimeTx.setText(ApplicationService.endTime);
@@ -202,10 +196,10 @@ public class FilterNotifyActivity extends AppCompatActivity {
                 setCheck(customerCheck, faceRecog);
             }
         });
-        this.fireCheck.setOnClickListener(new View.OnClickListener() {
+        this.licenseCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setCheck(fireCheck, fireDetect);
+                setCheck(licenseCheck, licenseDetect);
             }
         });
         this.statusDeviceCheck.setOnClickListener(new View.OnClickListener() {
@@ -265,8 +259,8 @@ public class FilterNotifyActivity extends AppCompatActivity {
             case accessDetect:
                 accessCheck.setChecked(true);
                 accessCheck.setSelected(true);
-                fireCheck.setChecked(false);
-                fireCheck.setSelected(false);
+                licenseCheck.setChecked(false);
+                licenseCheck.setSelected(false);
                 customerCheck.setChecked(false);
                 customerCheck.setSelected(false);
                 statusDeviceCheck.setChecked(false);
@@ -278,15 +272,15 @@ public class FilterNotifyActivity extends AppCompatActivity {
                 customerCheck.setSelected(true);
                 accessCheck.setChecked(false);
                 accessCheck.setSelected(false);
-                fireCheck.setChecked(false);
-                fireCheck.setSelected(false);
+                licenseCheck.setChecked(false);
+                licenseCheck.setSelected(false);
                 statusDeviceCheck.setChecked(false);
                 statusDeviceCheck.setSelected(false);
                 ApplicationService.applicationId = value;
                 break;
-            case fireDetect:
-                fireCheck.setChecked(true);
-                fireCheck.setSelected(true);
+            case licenseDetect:
+                licenseCheck.setChecked(true);
+                licenseCheck.setSelected(true);
                 accessCheck.setChecked(false);
                 accessCheck.setSelected(false);
                 customerCheck.setChecked(false);
@@ -300,8 +294,8 @@ public class FilterNotifyActivity extends AppCompatActivity {
                 statusDeviceCheck.setSelected(true);
                 accessCheck.setChecked(false);
                 accessCheck.setSelected(false);
-                fireCheck.setChecked(false);
-                fireCheck.setSelected(false);
+                licenseCheck.setChecked(false);
+                licenseCheck.setSelected(false);
                 customerCheck.setChecked(false);
                 customerCheck.setSelected(false);
                 ApplicationService.applicationId = value;
@@ -347,7 +341,7 @@ public class FilterNotifyActivity extends AppCompatActivity {
     private String getListDevice() {
         ArrayList<Integer> listId = new ArrayList<>();
         for (CameraItem cameraItem : ApplicationService.cameraitems) {
-            Log.e(TAG, "getListDevice: " + cameraItem.getCameraName() + " " + cameraItem.isChoose());
+//            Log.e(TAG, "getListDevice: " + cameraItem.getCameraName() + " " + cameraItem.isChoose());
             if (cameraItem.isChoose()) {
                 listId.add(cameraItem.getCameraId());
             }
@@ -378,11 +372,11 @@ public class FilterNotifyActivity extends AppCompatActivity {
 
     private void setAllCheck(boolean ischeck) {
         accessCheck.setChecked(ischeck);
-        fireCheck.setChecked(ischeck);
+        licenseCheck.setChecked(ischeck);
         customerCheck.setChecked(ischeck);
         statusDeviceCheck.setChecked(ischeck);
         accessCheck.setSelected(ischeck);
-        fireCheck.setSelected(ischeck);
+        licenseCheck.setSelected(ischeck);
         customerCheck.setSelected(ischeck);
         statusDeviceCheck.setSelected(ischeck);
     }

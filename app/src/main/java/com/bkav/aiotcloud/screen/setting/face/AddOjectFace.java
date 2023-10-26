@@ -2,7 +2,6 @@ package com.bkav.aiotcloud.screen.setting.face;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -31,7 +29,6 @@ import com.bkav.aiotcloud.config.AIConfig;
 import com.bkav.aiotcloud.language.LanguageManager;
 import com.bkav.aiotcloud.screen.setting.SettingFragment;
 import com.bkav.aiotcloud.screen.setting.face.customer.ListCustomerActivity;
-import com.bkav.aiotcloud.screen.setting.face.customer.TypeCustomerAdapter;
 import com.bkav.aiotcloud.view.ViewPagerNonSwipe;
 import com.google.android.material.tabs.TabLayout;
 

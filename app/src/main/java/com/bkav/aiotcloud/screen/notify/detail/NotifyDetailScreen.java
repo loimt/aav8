@@ -213,50 +213,60 @@ public class NotifyDetailScreen extends AppCompatActivity {
                 GradientDrawable drawable2 = (GradientDrawable) event2.getBackground();
                 drawable2.setColor(ContextCompat.getColor(getApplication(), R.color.barColor));
             }
-            if (notifyItem.getString("identity").equals(NotifyAdapter.statusDevice)
-            ) {
-                content.setText(String.format(LanguageManager.getInstance().getValue("device_content_format"), notifyItem.getString("cameraName"), notifyItem.getString("content")));
-                nameContent.setText(LanguageManager.getInstance().getValue("deviceactivity"));
-                avaterImage.getLayoutParams().height = 100;
-                avaterImage.getLayoutParams().width = 100;
-                Glide.with(getApplication())
-                        .load(R.drawable.camera_icon)
-                        .placeholder(R.drawable.camera_icon)
-                        .into(avaterImage);
-                GradientDrawable drawable = (GradientDrawable) backgroud.getBackground();
-                drawable.setColor(Color.parseColor(notifyItem.getString("backgroundColor")));
+            GradientDrawable drawable;
+            String[] contens;
+            switch (notifyItem.getString("identity")) {
+                case NotifyAdapter.statusDevice:
+                    content.setText(String.format(LanguageManager.getInstance().getValue("device_content_format"), notifyItem.getString("cameraName"), notifyItem.getString("content")));
+                    nameContent.setText(LanguageManager.getInstance().getValue("deviceactivity"));
+                    avaterImage.getLayoutParams().height = 100;
+                    avaterImage.getLayoutParams().width = 100;
+                    Glide.with(getApplication())
+                            .load(R.drawable.camera_icon)
+                            .placeholder(R.drawable.camera_icon)
+                            .into(avaterImage);
+                    drawable = (GradientDrawable) backgroud.getBackground();
+                    drawable.setColor(Color.parseColor(notifyItem.getString("backgroundColor")));
 
-                this.event1.setVisibility(View.GONE);
-
-            } else if (notifyItem.getString("identity").equals(NotifyAdapter.intrusion)) {
-                if (!notifyItem.isNull("content")) {
-                    Log.e(TAG, notifyItem.getString("content"));
-                    String[] contens = notifyItem.getString("content").split("\\|");
-                    content.setText(String.format(LanguageManager.getInstance().getValue("instrusion_content_format"), contens[1], contens[2]));
-                }
-                nameContent.setText(LanguageManager.getInstance().getValue("intrusion_detect"));
-                avaterImage.getLayoutParams().height = 100;
-                avaterImage.getLayoutParams().width = 100;
-                Glide.with(getApplication())
-                        .load(R.drawable.intrusion_icon)
-                        .placeholder(R.drawable.intrusion_icon)
-                        .into(avaterImage);
-                GradientDrawable drawable = (GradientDrawable) backgroud.getBackground();
-                drawable.setColor(ContextCompat.getColor(getApplication(), R.color.mainColor));
-            } else {
-                String[] contens = notifyItem.getString("content").split(" " + "\\|" + " ");
-                if (contens[0].equals(NotifyAdapter.customer)) {
-//                Log.e(TAG, String.format(ai_fr_content_format, contens[1], contens[2], contens[3], contens[4]));
-                    content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_content_format"), contens[1], contens[2], contens[3], contens[4]));
-                } else if (contens[0].equals(NotifyAdapter.unknow)) {
-//                    nameContent.setText(LanguageManager.getInstance().getValue("stranger_detect"));
-                    content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_unknow_format"), contens[1], contens[2]));
-                }
-                GradientDrawable drawable = (GradientDrawable) backgroud.getBackground();
-                drawable.setColor(Color.parseColor(notifyItem.getString("backgroundColor")));
-
+                    this.event1.setVisibility(View.GONE);
+                    break;
+                case NotifyAdapter.faceReconizerType:
+                    contens = notifyItem.getString("content").split(" " + "\\|" + " ");
+                    if (contens[0].equals(NotifyAdapter.customer)) {
+                        content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_content_format"), contens[1], contens[2], contens[3], contens[4]));
+                    } else {
+                        content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_unknow_format"), contens[1], contens[2]));
+                    }
+                    drawable = (GradientDrawable) backgroud.getBackground();
+                    drawable.setColor(Color.parseColor(notifyItem.getString("backgroundColor")));
+                    break;
+                case NotifyAdapter.intrusion:
+                    if (!notifyItem.isNull("content")) {
+                        Log.e(TAG, notifyItem.getString("content"));
+                        contens = notifyItem.getString("content").split("\\|");
+                        content.setText(String.format(LanguageManager.getInstance().getValue("instrusion_content_format"), contens[1], contens[2]));
+                    }
+                    nameContent.setText(LanguageManager.getInstance().getValue("intrusion_detect"));
+                    avaterImage.getLayoutParams().height = 100;
+                    avaterImage.getLayoutParams().width = 100;
+                    Glide.with(getApplication())
+                            .load(R.drawable.intrusion_icon)
+                            .placeholder(R.drawable.intrusion_icon)
+                            .into(avaterImage);
+                    drawable = (GradientDrawable) backgroud.getBackground();
+                    drawable.setColor(ContextCompat.getColor(getApplication(), R.color.mainColor));
+                    break;
+                case NotifyAdapter.licenseplate:
+                    contens = notifyItem.getString("content").split(" " + "\\|" + " ");
+                    nameContent.setText(LanguageManager.getInstance().getValue("lable_detect"));
+                    content.setText(String.format(LanguageManager.getInstance().getValue("ai_license_content_format"), contens[0], contens[2], contens[1]));
+                    drawable = (GradientDrawable) backgroud.getBackground();
+                    drawable.setColor(Color.parseColor(notifyItem.getString("backgroundColor")));
+                    break;
+                default:
+                    break;
             }
-//            this.content.setText(notifyItem.getString("content"));
+
             this.locateTx.setText(notifyItem.getString("address"));
             this.nameCamera.setText(notifyItem.getString("cameraName"));
             this.timeTx.setText(DateTimeFormat.getTimeFormat(notifyItem.getString("createdAt"), DateTimeFormat.DATE_ROOTH, DateTimeFormat.TIME_FORMAT));
@@ -285,7 +295,7 @@ public class NotifyDetailScreen extends AppCompatActivity {
             }
             if (listPath.length() == 1) {
                 event2.setVisibility(View.GONE);
-                Log.e("NotifyDetailScreen",listPath.getJSONObject(0).getString("filePath"));
+                Log.e("NotifyDetailScreen", listPath.getJSONObject(0).getString("filePath"));
                 Glide.with(this)
                         .load(listPath.getJSONObject(0).getString("filePath")).into(eventImage1);
             }

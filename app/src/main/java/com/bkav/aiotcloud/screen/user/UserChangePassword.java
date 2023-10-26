@@ -10,21 +10,16 @@ import android.os.Message;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -249,7 +244,7 @@ public class UserChangePassword extends AppCompatActivity {
                 case ApplicationService.MESSAGE_CHANGE_PASS_SUCCESS:
                     ApplicationService.showToast(LanguageManager.getInstance().getValue("changePass_user_success"), false);
                     break;
-                case ApplicationService.MESSAGE_UPDATE_USERPROFILE_FAIL:
+                case ApplicationService.MESSAGE_UPDATE_FAIL:
                     ApplicationService.showToast(LanguageManager.getInstance().getValue("changePass_user_fail"), true);
                     break;
             }

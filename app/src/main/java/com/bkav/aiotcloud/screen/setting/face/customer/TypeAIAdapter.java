@@ -15,18 +15,16 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.bkav.aiotcloud.R;
-import com.bkav.aiotcloud.entity.CameraItem;
-import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class TypeCustomerAdapter extends ArrayAdapter<TypeCustomerItem> {
+public class TypeAIAdapter extends ArrayAdapter<TypeAIObject> {
 
-    public TypeCustomerAdapter(Context context, ArrayList<TypeCustomerItem> typeCustomerItems) {
-        super(context, 0, typeCustomerItems);
-        this.typeCustomerItems = typeCustomerItems;
+    public TypeAIAdapter(Context context, ArrayList<TypeAIObject> typeAIItems) {
+        super(context, 0, typeAIItems);
+        this.typeAIItems = typeAIItems;
     }
 
 
@@ -34,7 +32,7 @@ public class TypeCustomerAdapter extends ArrayAdapter<TypeCustomerItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        TypeCustomerItem typeCustomerItem = typeCustomerItems.get(position);
+        TypeAIObject typeCustomerItem = typeAIItems.get(position);
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         view = inflater.inflate(R.layout.type_customer_item, null);
@@ -46,10 +44,14 @@ public class TypeCustomerAdapter extends ArrayAdapter<TypeCustomerItem> {
         background.setBackgroundResource(R.drawable.retangcle);
         // set background
         GradientDrawable drawable = (GradientDrawable) background.getBackground();
-        drawable.setColor(Color.parseColor(typeCustomerItem.getBackGroundColor()));
+        try {
+            drawable.setColor(Color.parseColor(typeCustomerItem.getBackground()));
+        } catch (Exception e){
+//            drawable.setColor(Color.parseColor(Color.RED);
+        }
 
-        name.setText(typeCustomerItem.getCustomerTypeName());
-        descrip.setText(typeCustomerItem.getDescription());
+        name.setText(typeCustomerItem.getName());
+        descrip.setText(typeCustomerItem.getDesciption());
 
         if (typeCustomerItem.isActive()){
             status.setTextColor(ContextCompat.getColor(getContext(), R.color.stateActive));
@@ -62,19 +64,19 @@ public class TypeCustomerAdapter extends ArrayAdapter<TypeCustomerItem> {
         ImageView popup = view.findViewById(R.id.popup);
         ImageView blink = view.findViewById(R.id.blink);
 
-        if (typeCustomerItem.getIdentity().contains("popup")){
+        if (typeCustomerItem.getIdentify().contains("popup")){
             popup.setImageResource(R.drawable.popup_highlight);
         } else {
             popup.setImageResource(R.drawable.popup_icon);
         }
 
-        if (typeCustomerItem.getIdentity().contains("sound")){
+        if (typeCustomerItem.getIdentify().contains("sound")){
             sound.setImageResource(R.drawable.sound_highlight);
         } else {
             sound.setImageResource(R.drawable.sound_icon);
         }
 
-        if (typeCustomerItem.getIdentity().contains("flicker")){
+        if (typeCustomerItem.getIdentify().contains("flicker")){
             blink.setImageResource(R.drawable.blink_highlight);
         } else {
             blink.setImageResource(R.drawable.blink_icon);
@@ -82,5 +84,5 @@ public class TypeCustomerAdapter extends ArrayAdapter<TypeCustomerItem> {
         return view;
     }
 
-    private ArrayList<TypeCustomerItem> typeCustomerItems;
+    private ArrayList<TypeAIObject> typeAIItems;
 }

@@ -256,17 +256,17 @@
                             android:layout_weight="1">
 
                             <TextView
-                                android:id="@+id/fireDetectTx"
+                                android:id="@+id/licenseTx"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_5sdp"
-                                android:text="Phát hiện cháy nổ"
+                                android:text="@string/licenseDetect"
                                 android:textColor="@android:color/white"
                                 android:textSize="13sp" />
 
                             <RadioButton
-                                android:id="@+id/fireCheck"
+                                android:id="@+id/licenseCheck"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"

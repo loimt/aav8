@@ -17,6 +17,7 @@ import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.language.LanguageManager;
 import com.bkav.aiotcloud.screen.setting.face.FaceDetectionActivity;
 import com.bkav.aiotcloud.screen.setting.face.ListFaceObjectActivity;
+import com.bkav.aiotcloud.screen.setting.license.LicenseSetting;
 
 public class SettingFragment extends Fragment {
     public static final String TYPE = "type";
@@ -77,7 +78,8 @@ public class SettingFragment extends Fragment {
         this.licenseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ListFaceObjectActivity.class);
+//                Intent intent = new Intent(getContext(), ListFaceObjectActivity.class);
+                Intent intent = new Intent(getContext(), LicenseSetting.class);
                 intent.putExtra(TYPE, LICENSE_PLATE);
                 startActivity(intent);
             }

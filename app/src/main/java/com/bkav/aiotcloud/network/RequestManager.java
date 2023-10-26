@@ -34,11 +34,8 @@ import com.bkav.aiotcloud.screen.widget.EventAccessdetectIndays;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.webrtc.PeerConnection;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -262,7 +259,7 @@ public class RequestManager {
                             message.what = ApplicationService.UPDATE_CAM_SUCCESS;
                         }
                     } else {
-                        message.what = ApplicationService.UPDATE_CAM_FAIL;
+                        message.what = ApplicationService.UPDATE_CAM_FAILE;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -464,6 +461,7 @@ public class RequestManager {
     public void addUpdateCustomerType(JSONObject payload, String url) {
         UrlRequestCallback.OnFinishRequest callbackInfo = addUpdateCustomerTypeCallbackActions();
         UrlRequestCallback requestCallback = new UrlRequestCallback(callbackInfo);
+        Log.e("addupdateType", payload.toString());
         NetworkRequest.put(url, payload.toString(), requestCallback);
     }
 
@@ -518,7 +516,7 @@ public class RequestManager {
                     int statusCode = responseBody.getInt("statusCode");
                     if (statusCode == 400) {
                         Message message = new Message();
-                        message.what = ApplicationService.MESSAGE_UPDATE_USERPROFILE_FAIL;
+                        message.what = ApplicationService.MESSAGE_UPDATE_FAIL;
                         message.obj = responseBody.getString("object");
                         ApplicationService.mainHandler.sendMessage(message);
                     } else if (statusCode == 200) {
@@ -990,7 +988,6 @@ public class RequestManager {
         };
     }
 
-
     public UrlRequestCallback.OnFinishRequest getListTypeCustomerCallback() {
         return new UrlRequestCallback.OnFinishRequest() {
             @Override
@@ -1007,7 +1004,6 @@ public class RequestManager {
                         message.obj = responseBody.getString("object");
                         ApplicationService.mainHandler.sendMessage(message);
                     } else if (statusCode == 200) {
-
                         JSONArray object = new JSONArray(responseBody.getString("object"));
                         ApplicationService.typeCustomerItems.clear();
                         for (int index = 0; index < object.length(); index++) {
@@ -1051,6 +1047,7 @@ public class RequestManager {
                             CustomerItem customerItem = new CustomerItem(obj);
                             ApplicationService.customerItems.add(customerItem);
                         }
+                        Log.e("license", ApplicationService.customerItems.size() + " xxx");
                         ApplicationService.mainHandler.sendEmptyMessage(ApplicationService.GET_LIST_CUSTOMER_SUCCESS);
                     }
                 } catch (JSONException e) {
@@ -1618,7 +1615,7 @@ public class RequestManager {
     public void sendFile(ArrayList<File> images, File avatar, String objectGuid, int profileId) {
 
 
-        Log.e("file", "null " + avatar.exists());
+        Log.e("filexx", "null " + avatar.exists());
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         MediaType mediaType = MediaType.parse("text/plain");

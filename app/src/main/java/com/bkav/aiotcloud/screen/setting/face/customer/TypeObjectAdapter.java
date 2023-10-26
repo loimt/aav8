@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bkav.aiotcloud.R;
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
 import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
 import com.bkav.aiotcloud.screen.setting.face.DayItem;
 import com.bkav.aiotcloud.screen.setting.face.ListDayAdapter;
@@ -23,12 +24,12 @@ import java.util.ArrayList;
 
 public class TypeObjectAdapter extends RecyclerView.Adapter<TypeObjectAdapter.ViewHolder> {
 
-    private ArrayList<TypeCustomerItem> typeCustomerItems;
+    private ArrayList<TypeAIObject> typeCustomerItems;
     private LayoutInflater mInflater;
     private ListDayAdapter.ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    TypeObjectAdapter(Context context, ArrayList<TypeCustomerItem> typeCustomerItems) {
+    TypeObjectAdapter(Context context, ArrayList<TypeAIObject> typeCustomerItems) {
         this.mInflater = LayoutInflater.from(context);
         this.typeCustomerItems = typeCustomerItems;
     }
@@ -43,8 +44,8 @@ public class TypeObjectAdapter extends RecyclerView.Adapter<TypeObjectAdapter.Vi
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TypeCustomerItem typeCustomerItem = typeCustomerItems.get(position);
-        holder.name.setText(typeCustomerItem.getCustomerTypeName());
+        TypeCustomerItem typeCustomerItem =(TypeCustomerItem) typeCustomerItems.get(position);
+        holder.name.setText(typeCustomerItem.getName());
         holder.checkBox.setChecked(typeCustomerItem.isChoose());
 
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -83,7 +84,7 @@ public class TypeObjectAdapter extends RecyclerView.Adapter<TypeObjectAdapter.Vi
     }
 
     // convenience method for getting data at click position
-    TypeCustomerItem getItem(int id) {
+    TypeAIObject getItem(int id) {
         return typeCustomerItems.get(id);
     }
 

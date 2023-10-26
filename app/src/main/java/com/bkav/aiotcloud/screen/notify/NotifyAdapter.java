@@ -34,6 +34,7 @@ public class NotifyAdapter extends RecyclerView.Adapter<NotifyAdapter.ViewHolder
     public static final String statusCameraActive = "Active";
     public static final String intrusion = "accessdetect";
     public static final String faceReconizerType = "customerrecognize";
+    public static final String licenseplate = "licenseplate";
     public static final String customer = "Customer";
     public static final String unknow = "Unknow";
 
@@ -65,63 +66,75 @@ public class NotifyAdapter extends RecyclerView.Adapter<NotifyAdapter.ViewHolder
         }
         holder.backgroud.setBackgroundResource(R.drawable.circle);
         Log.e("event identity", notifyItem.getIdentity());
-        if (notifyItem.getIdentity().equals(faceReconizerType)) {
-            String[] contens = notifyItem.getContent().split(" " + "\\|" + " ");
-            holder.title.setText(LanguageManager.getInstance().getValue("face_recognize"));
-            if (contens[0].equals(customer)) {
-                holder.content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_content_format"), contens[1], contens[2], contens[3], contens[4]));
-            } else if (contens[0].equals(unknow)) {
-//                Log.e("xxxxx", contens[1] + contens[2] );
-//                holder.title.setText(LanguageManager.getInstance().getValue("stranger_detect"));
-                holder.content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_unknow_format"), contens[1], contens[2]));
-            }
-//            holder.content.setText(notifyItem.getContent());
-            Glide.with(context)
-                    .load(notifyItem.getIconNoti())
-                    .placeholder(R.drawable.user_default)
-                    .circleCrop()
-                    .into(holder.avatar);
-            GradientDrawable drawable = (GradientDrawable) holder.backgroud.getBackground();
-            drawable.setColor(Color.parseColor(notifyItem.getColor()));
-        } else if (notifyItem.getIdentity().equals(statusDevice)) {
-            holder.title.setText(LanguageManager.getInstance().getValue("deviceactivity"));
-            holder.avatar.getLayoutParams().height = 70;
-            holder.avatar.getLayoutParams().width = 70;
-//            holder.avatar.reqe
-            Glide.with(context)
-                    .load(R.drawable.camera_icon)
-                    .placeholder(R.drawable.camera_icon)
-                    .into(holder.avatar);
-            if (!notifyItem.getColor().equals("#fff")) {
-                GradientDrawable drawable = (GradientDrawable) holder.backgroud.getBackground();
-                drawable.setColor(Color.parseColor(notifyItem.getColor()));
-            }
-           holder.content.setText(String.format(LanguageManager.getInstance().getValue("device_content_format"),  notifyItem.getCameraName(), notifyItem.getContent()));
-
-//            if (notifyItem.getContent().equals(statusCameraActive)) {
-//                holder.content.setText(String.format(LanguageManager.getInstance().getValue("device_active_content_format"), notifyItem.getCameraName()));
-//            } else if (notifyItem.getContent().equals(statusCameraNoActive)) {
-//                holder.content.setText(String.format(LanguageManager.getInstance().getValue("device_inactive_content_format"), notifyItem.getCameraName()));
-//            }
-        } else if (notifyItem.getIdentity().equals(intrusion)) {
-            holder.title.setText(LanguageManager.getInstance().getValue("intrusion_detect"));
-            if (notifyItem.getContent().length() != 0){
-                String[] contens = notifyItem.getContent().split("\\|");
-//                String[] contens = notifyItem.getContent().split("\\|");
-                if (contens.length > 1){
-                    holder.content.setText(String.format(LanguageManager.getInstance().getValue("instrusion_content_format"), contens[1], contens[2]));
+        String[] contens;
+        GradientDrawable drawable;
+        switch (notifyItem.getIdentity()) {
+            case faceReconizerType:
+                contens = notifyItem.getContent().split(" " + "\\|" + " ");
+                Log.e("xxxxx", contens[1] + contens[2]);
+                holder.title.setText(LanguageManager.getInstance().getValue("face_recognize"));
+                if (contens[0].equals(customer)) {
+                    holder.content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_content_format"), contens[1], contens[2], contens[3], contens[4]));
+                } else {
+                    // khuôn mặt không xác định
+                    holder.content.setText(String.format(LanguageManager.getInstance().getValue("ai_fr_unknow_format"), contens[1], contens[2]));
                 }
-            }
-            holder.avatar.getLayoutParams().height = 70;
-            holder.avatar.getLayoutParams().width = 70;
+                Glide.with(context)
+                        .load(notifyItem.getIconNoti())
+                        .placeholder(R.drawable.user_default)
+                        .circleCrop()
+                        .into(holder.avatar);
+                drawable = (GradientDrawable) holder.backgroud.getBackground();
+                drawable.setColor(Color.parseColor(notifyItem.getColor()));
+                break;
+            case statusDevice:
+                holder.title.setText(LanguageManager.getInstance().getValue("deviceactivity"));
+                holder.avatar.getLayoutParams().height = 70;
+                holder.avatar.getLayoutParams().width = 70;
 //            holder.avatar.reqe
-            Glide.with(context)
-                    .load(R.drawable.intrusion_icon)
-                    .placeholder(R.drawable.intrusion_icon)
-                    .into(holder.avatar);
-            GradientDrawable drawable = (GradientDrawable) holder.backgroud.getBackground();
-            drawable.setColor(ContextCompat.getColor(context, R.color.mainColor));
+                Glide.with(context)
+                        .load(R.drawable.camera_icon)
+                        .placeholder(R.drawable.camera_icon)
+                        .into(holder.avatar);
+                if (!notifyItem.getColor().equals("#fff")) {
+                    GradientDrawable drawableDevice = (GradientDrawable) holder.backgroud.getBackground();
+                    drawableDevice.setColor(Color.parseColor(notifyItem.getColor()));
+                }
+                holder.content.setText(String.format(LanguageManager.getInstance().getValue("device_content_format"), notifyItem.getCameraName(), notifyItem.getContent()));
+                break;
+            case licenseplate:
+                contens = notifyItem.getContent().split(" " + "\\|" + " ");
+                holder.title.setText(LanguageManager.getInstance().getValue("lable_detect"));
+                holder.content.setText(String.format(LanguageManager.getInstance().getValue("ai_license_content_format"), contens[0], contens[2], contens[1]));
+                   Glide.with(context)
+                        .load(notifyItem.getIconNoti())
+                        .placeholder(R.drawable.user_default)
+                        .circleCrop()
+                        .into(holder.avatar);
+                drawable = (GradientDrawable) holder.backgroud.getBackground();
+                drawable.setColor(Color.parseColor(notifyItem.getColor()));
+                break;
+            case intrusion:
+                holder.title.setText(LanguageManager.getInstance().getValue("intrusion_detect"));
+                if (notifyItem.getContent().length() != 0) {
+                    contens = notifyItem.getContent().split("\\|");
+                    if (contens.length > 1) {
+                        holder.content.setText(String.format(LanguageManager.getInstance().getValue("instrusion_content_format"), contens[1], contens[2]));
+                    }
+                }
+                holder.avatar.getLayoutParams().height = 70;
+                holder.avatar.getLayoutParams().width = 70;
+                Glide.with(context)
+                        .load(R.drawable.intrusion_icon)
+                        .placeholder(R.drawable.intrusion_icon)
+                        .into(holder.avatar);
+                drawable = (GradientDrawable) holder.backgroud.getBackground();
+                drawable.setColor(ContextCompat.getColor(context, R.color.mainColor));
+                break;
+            default:
+                break;
         }
+
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,13 +142,15 @@ public class NotifyAdapter extends RecyclerView.Adapter<NotifyAdapter.ViewHolder
             }
         });
     }
-    private void viewDetailNotify(NotifyItem notifyItem, Context mContext){
+
+    private void viewDetailNotify(NotifyItem notifyItem, Context mContext) {
         Intent intent = new Intent(mContext, NotifyDetailScreen.class);
         notifyItem.setSeen(true);
         intent.putExtra(NotifyDetailScreen.OBJGUID, notifyItem.getObjGuid());
         intent.putExtra(NotifyDetailScreen.TYPE, "0");
         mContext.startActivity(intent);
     }
+
     // total number of rows
     @Override
     public int getItemCount() {

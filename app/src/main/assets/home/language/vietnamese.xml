@@ -33,6 +33,8 @@
     <item description="" key="location" value="Vị trí" />
     <item description="" key="ai_state" value="Trạng thái AI" />
     <item description="" key="manage_customer" value="Quản lý khách hàng" />
+    <item description="" key="unknow_face" value="Khuôn mặt chưa xác định" />
+    <item description="" key="unknow_face_name" value="Khuôn mặt chưa xác định" />
     <item description="" key="manage_face" value="Quản lý khuôn mặt" />
     <item description="" key="manage_face_group" value="Quản lý nhóm khuôn mặt" />
     <item description="" key="manage_type_customer" value="Phân loại khách" />
@@ -100,6 +102,7 @@
 
     <item description="" key="add_config_success" value="Cấu hình thành công" />
     <item description="" key="add_config_un_success" value="Cấu hình không thành công" />
+    <item description="" key="delete_license_question" value="Bạn có muốn xoá biển số %s không?" />
 
     <item description="" key="update_user_success" value="Cập nhật thông tin người dùng thành công" />
     <item description="" key="update_user_fail" value="Lỗi cập nhật thông tin người dùng" />
@@ -191,7 +194,15 @@
 
     <item description="" key="notify_setting" value="Cài đặt thông báo" />
     <item description="" key="accessdetect" value="Cảnh báo xâm nhập" />
-    <item description="" key="licenseplate" value="Phát hiện biển số" />
+
+    <item description="" key="group_license" value="Nhóm biển số" />
+    <item description="" key="transportation" value="Loại phương tiện" />
+    <item description="" key="license" value="Biển số" />
+    <item description="" key="license_plate_number" value="Biển số xe" />
+    <item description="" key="license_plate_list" value="Danh sách biển số" />
+    <item description="" key="licenseplate" value="Nhận diện biển số" />
+    <item description="" key="licenseplate_management" value="Quản lý biển số" />
+    <item description="" key="licenseplate_managementGroup" value="Quản lý nhóm biển số" />
     <item description="" key="customerrecognize" value="Nhận diện khuôn mặt" />
     <item description="" key="persondetection" value="Nhận diện đám đông" />
     <item description="" key="automatic_sync" value="Đồng bộ tự động" />
@@ -276,6 +287,7 @@
     <item description="" key="note_input" value="Nhập ghi chú" />
 
     <item description="" key="ai_fr_content_format" value="%s - %s đến %s tại %s" />
+    <item description="" key="ai_license_content_format" value="Phát hiện biển số %s tại %s ở %s" />
     <item description="" key="ai_fr_unknow_format" value="Phát hiện khuôn mặt chưa xác định đến %s tại %s" />
     <item description="" key="instrusion_content_format" value="Phát hiện xâm nhập tại %s ở %s" />
     <item description="" key="device_content_format" value="%s hoạt động" />

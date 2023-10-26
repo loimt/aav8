@@ -18,6 +18,8 @@ public class SharedPrefs {
         this.preferences = this.context.getSharedPreferences(database_name, Context.MODE_PRIVATE);
     }
 
+
+
     public String getLocale() {
         if (this.preferences.contains(LOCALE_KEY)) {
             return preferences.getString(LOCALE_KEY, "");

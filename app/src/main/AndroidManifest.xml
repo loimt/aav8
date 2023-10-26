@@ -81,6 +81,11 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".screen.setting.face.unidenifiedface.UnidenifiedFaceActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".screen.setting.face.historyObject.CalendarBottomSheet"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/DialogStyle"
@@ -99,7 +104,22 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name=".screen.setting.license.ProfileLicenseManage"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".screen.setting.face.historyObject.ListDates"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.setting.license.AddLicense"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.setting.license.LicenseSetting"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -252,6 +272,11 @@
             android:theme="@style/DialogStyle" />
 
         <activity
+            android:name=".screen.setting.license.FilterLicense"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogStyle" />
+
+        <activity
             android:name=".screen.home.camera.playback.FilterPlayback"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/DialogStyle" />
@@ -321,7 +346,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".screen.setting.face.customer.ListTypeCustomer"
+            android:name=".screen.setting.face.customer.ListTypeAI"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity

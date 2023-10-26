@@ -1,9 +1,7 @@
 package com.bkav.aiotcloud.screen.setting.face.customer;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -16,18 +14,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.screen.setting.face.DayItem;
-import com.bkav.aiotcloud.screen.setting.face.ListDayAdapter;
-import com.bkav.aiotcloud.screen.setting.face.ScheduleItem;
-import com.bkav.aiotcloud.screen.setting.face.SetHourDialog;
-import com.bkav.aiotcloud.screen.setting.face.StepThreeFragment;
-import com.bkav.aiotcloud.screen.user.EditUserProfile;
-
-import java.util.ArrayList;
 
 public class FilterTypeCustomer extends AppCompatActivity {
     public static final String STATUS = "status";
@@ -214,9 +203,9 @@ public class FilterTypeCustomer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent dataBack = new Intent();
-                dataBack.putExtra(ListCustomerActivity.TYPE, ListTypeCustomer.FILTER);
-                dataBack.putExtra(ListTypeCustomer.STATUS, currentStatus);
-                dataBack.putExtra(ListTypeCustomer.TYPE_SHOW, currentType);
+                dataBack.putExtra(ListCustomerActivity.TYPE, ListTypeAI.FILTER);
+                dataBack.putExtra(ListTypeAI.STATUS, currentStatus);
+                dataBack.putExtra(ListTypeAI.TYPE_SHOW, currentType);
                 setResult(RESULT_OK, dataBack);
                 finish();
             }

@@ -111,9 +111,9 @@ public class Playback extends Fragment {
                 currentCamera = cameraItem;
             }
         }
-        if (currentCamera.getCameraInfo() != null){
-            Log.e("mediazz " , currentCamera.getCameraInfo());
-        }
+//        if (currentCamera.getCameraInfo() != null){
+//            Log.e("mediazz " , currentCamera.getCameraInfo());
+//        }
 
         this.redSD = view.findViewById(R.id.redSD);
         this.redHD = view.findViewById(R.id.redHD);

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -23,14 +22,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.screen.setting.face.ScheduleItem;
-import com.bkav.aiotcloud.screen.setting.face.StepThreeFragment;
 import com.bkav.aiotcloud.view.GridviewCustom;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ListTypeCustomer extends AppCompatActivity {
+public class ListTypeAI extends AppCompatActivity {
+    public static final String PROFILE = "PROFILE";
+    public static final String FACE = "FACE";
+    public static final String LICENSE = "LICENSE";
+
+
+
+
     public static final String TYPE = "type";
     public static final String NEW = "new";
     public static final String EDIT = "edit";
@@ -45,6 +49,7 @@ public class ListTypeCustomer extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+        currentProfile = getIntent().getStringExtra(PROFILE);
         setContentView(R.layout.type_customer_screen);
         init();
     }
@@ -60,8 +65,10 @@ public class ListTypeCustomer extends AppCompatActivity {
     private RelativeLayout backIM;
     private TextView title;
 
+    private String currentProfile = "";
+
     private RelativeLayout filter;
-    private TypeCustomerAdapter typeCustomerAdapter;
+    private TypeAIAdapter typeAIAdapter;
     private int currentStatus = 1;
     private String currentIdentity = "all";
 
@@ -109,8 +116,12 @@ public class ListTypeCustomer extends AppCompatActivity {
         this.gridview = findViewById(R.id.gridview);
         this.title = findViewById(R.id.title);
         this.backIM = findViewById(R.id.backIm);
-        this.typeCustomerAdapter = new TypeCustomerAdapter(this, ApplicationService.typeCustomerItems);
-        this.gridview.setAdapter(this.typeCustomerAdapter);
+        if (currentIdentity.equals(FACE)){
+            this.typeAIAdapter = new TypeAIAdapter(this, ApplicationService.typeCustomerItems);
+        } else {
+            this.typeAIAdapter = new TypeAIAdapter(this, ApplicationService.licenseGroupItems);
+        }
+        this.gridview.setAdapter(this.typeAIAdapter);
         this.filter = findViewById(R.id.filter);
 
         ImageView addIM = findViewById(R.id.addIM);
@@ -137,6 +148,7 @@ public class ListTypeCustomer extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 Intent intent = new Intent(getApplication(), DetailTypeObject.class);
+                intent.putExtra(PROFILE, currentProfile);
                 intent.putExtra(TYPE, EDIT);
                 intent.putExtra(ID, position);
                 startActivityIntent.launch(intent);
@@ -147,6 +159,7 @@ public class ListTypeCustomer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplication(), DetailTypeObject.class);
+                intent.putExtra(PROFILE, currentProfile);
                 intent.putExtra(TYPE, NEW);
                 startActivityIntent.launch(intent);
             }
@@ -179,7 +192,7 @@ public class ListTypeCustomer extends AppCompatActivity {
             super.handleMessage(message);
             switch (message.what) {
                 case ApplicationService.GET_LIST_TYPE_CUSTOMER_SUCCESS:
-                    typeCustomerAdapter.notifyDataSetChanged();
+                    typeAIAdapter.notifyDataSetChanged();
                     break;
             }
         }

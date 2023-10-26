@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_90sdp"
-                android:background="@android:color/white"
+                android:background="@android:color/background_dark"
                 android:id="@+id/imageCamera"
                 android:scaleType="centerCrop"
                 />

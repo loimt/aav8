@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
 import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
 import com.bkav.aiotcloud.language.LanguageManager;
 
@@ -304,8 +305,8 @@ public class FilterCustomer extends AppCompatActivity {
                 activingCheck.setChecked(true);
                 resetCheckSex(all);
                 resetCheckStatus(active);
-                for (TypeCustomerItem typeCustomerItem : ApplicationService.typeCustomerItems){
-                    typeCustomerItem.setChoose(false);
+                for (TypeAIObject typeCustomerItem : ApplicationService.typeCustomerItems){
+                    ((TypeCustomerItem) typeCustomerItem).setChoose(false);
                 }
                 typeCustomerAdapter.notifyDataSetChanged();
             }
@@ -349,9 +350,9 @@ public class FilterCustomer extends AppCompatActivity {
 
     private String getListType(){
         ArrayList<Integer> listId = new ArrayList<>();
-        for (TypeCustomerItem typeCustomerItem : ApplicationService.typeCustomerItems){
-            if (typeCustomerItem.isChoose()){
-                listId.add(typeCustomerItem.getCustomerTypeId());
+        for (TypeAIObject typeCustomerItem : ApplicationService.typeCustomerItems){
+            if (((TypeCustomerItem) typeCustomerItem).isChoose()){
+                listId.add(typeCustomerItem.getID());
             }
         }
         return listId.toString().replace("[", "").replace("]", "");

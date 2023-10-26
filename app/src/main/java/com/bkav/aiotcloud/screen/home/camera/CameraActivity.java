@@ -267,7 +267,7 @@ public class CameraActivity extends AppCompatActivity implements ClientHandler {
         clientOptions.streamMode("PLAYBACK");
         clientOptions.streamSRC(fileName);
         webRTCClient.restart();
-        Log.e("cameraActivity", fileName);
+//        Log.e("cameraActivity", fileName);
     }
 
 
@@ -315,21 +315,31 @@ public class CameraActivity extends AppCompatActivity implements ClientHandler {
             if (isBoxChannel) {
                 JSONObject profileCamera = new JSONObject(this.cameraItem.getCameraInfo());
                 tokenVS = profileCamera.getString("TokenVS");
-                sourceToken = profileCamera.getJSONArray("ListTokenMP").getJSONObject(0).getString("Token");
-                JSONArray profileChannel = profileCamera.getJSONArray("ListTokenMP");
-                for (int index = 0; index < profileChannel.length(); index++){
-                    if (profileChannel.getJSONObject(index).getString("Name").contains("MainStream")){
-                        this.mainStream = profileChannel.getJSONObject(index).getString("Token");
-                    } else if (profileChannel.getJSONObject(index).getString("Name").contains("SubStream")){
-                        this.subStream = profileChannel.getJSONObject(index).getString("Token");
+                JSONArray listToken =  profileCamera.getJSONArray("ListTokenMP");
+                for (int index = 0; index < listToken.length(); index++){
+                    if (listToken.getJSONObject(index).getString("VideoEncodingSupport").equals("H264")){
+                        sourceToken = listToken.getJSONObject(index).getString("Token");
+                        Log.e("tokenMPx", sourceToken+ "");
+                        break;
                     }
                 }
+//                sourceToken = profileCamera.getJSONArray("ListTokenMP").getJSONObject(0).getString("Token");
+//                JSONArray profileChannel = profileCamera.getJSONArray("ListTokenMP");
+//                for (int index = 0; index < profileChannel.length(); index++){
+//                    if (profileChannel.getJSONObject(index).getString("Name").contains("MainStream")){
+//                        this.mainStream = profileChannel.getJSONObject(index).getString("Token");
+//                    } else if (profileChannel.getJSONObject(index).getString("Name").contains("SubStream")){
+//                        this.subStream = profileChannel.getJSONObject(index).getString("Token");
+//                    }
+//                }
 
-                sourceToken = profileChannel.getJSONObject(0).getString("Token");
+//                sourceToken = profileChannel.getJSONObject(0).getString("Token");
                 clientOptions.streamSRC(sourceToken);
             }
         } catch (JSONException e) {
             Log.e(Tag, e.toString());
+//            Log.e("tokenMPx", e.toString()+ "");
+
             e.printStackTrace();
         }
 
@@ -438,9 +448,9 @@ public class CameraActivity extends AppCompatActivity implements ClientHandler {
             } else {
                 switch (header.getString("component")) {
                     case "image_service":
-                        if (jsonData.getJSONObject("envelope").getJSONObject("body").get("func").equals("get_options_response")) {
-                            lightSettingMain.setMinMaxImage(jsonData.getJSONObject("envelope").getJSONObject("body").getJSONObject("data").getJSONObject("data"));
-                        }
+//                        if (jsonData.getJSONObject("envelope").getJSONObject("body").get("func").equals("get_options_response")) {
+//                            lightSettingMain.setMinMaxImage(jsonData.getJSONObject("envelope").getJSONObject("body").getJSONObject("data").getJSONObject("data"));
+//                        }
 
                         if (jsonData.getJSONObject("envelope").getJSONObject("body").get("func").equals("get_options_response")) {
                             lightSettingMain.setMinMaxImage(jsonData.getJSONObject("envelope").getJSONObject("body").getJSONObject("data").getJSONObject("data"));

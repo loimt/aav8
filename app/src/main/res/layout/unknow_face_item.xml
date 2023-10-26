@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutNotify"
+    android:layout_width="@dimen/_135sdp"
+    android:orientation="vertical"
+    android:layout_height="@dimen/_150sdp"
+    android:background="@drawable/conner_login">
+
+    <!--    <de.hdodenhof.circleimageview.CircleImageView-->
+    <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--        android:id="@+id/avaterImage"-->
+    <!--        android:layout_width="@dimen/_50sdp"-->
+    <!--        android:layout_height="@dimen/_50sdp"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginTop="@dimen/_3sdp"-->
+    <!--        android:src="@drawable/cloudy_highlight"-->
+    <!--        app:civ_border_color="@color/red"-->
+    <!--        app:civ_border_width="2dp" />-->
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backgroud"
+        android:background="@drawable/circle"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/avaterImage"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/user_default" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/nameCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backgroud"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="3dp"
+        android:maxLines="1"
+        android:text="@string/customer"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/typeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameCustomer"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/conner_bar_title">
+
+        <TextView
+            android:id="@+id/typeCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:maxLines="1"
+            android:text="@string/partner"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_8sdp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@id/typeLayout"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/conner_bar_title">
+
+        <TextView
+            android:id="@+id/timeEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:maxLines="1"
+            android:text="@string/time"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_8sdp" />
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -282,6 +282,7 @@ public class LoginActiviry extends AppCompatActivity {
             switch (message.what) {
                 case ApplicationService.LOGIN_SUCCESS:
                     loadingLogin.setVisibility(View.GONE);
+                    ApplicationService.initWidget();
                     SharePref.getInstance(getApplicationContext()).setUserPassword(txUser.getText().toString(), txPass.getText().toString());
                     SharePref.getInstance(getApplicationContext()).setIsLogin(true);
                     Intent intent = new Intent(getApplication(), MainScreen.class);

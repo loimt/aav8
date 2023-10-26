@@ -2,15 +2,12 @@ package com.bkav.aiotcloud.network;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
-import com.bkav.aiotcloud.main.SharePref;
 import com.bkav.bai.bridge.client.SignalingClient;
 import com.bkav.bai.bridge.client.SignalingClientState;
 import com.bkav.bai.bridge.common.SignalingContext;
@@ -65,6 +62,8 @@ public class BrManager {
     public static final BrConfig PRConfig;
     public static final BrConfig DevConfig;
 
+    public static final BrConfig OnPreConfig;
+
     static {
         QCConfig = new BrConfig(
                 R.raw.signaling_config_qc,
@@ -82,7 +81,13 @@ public class BrManager {
                 "pr.saveKey.signaling.connect.data",
                 true
         );
-        currentConfig = PRConfig;
+
+        OnPreConfig = new BrConfig(
+                R.raw.signaling_config_pre,
+                "onpre.saveKey.signaling.connect.data",
+                true
+        );
+        currentConfig = OnPreConfig;
         // TODO load trickle from saved
     }
 

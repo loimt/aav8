@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,8 @@ public class TypeWidget extends AppCompatActivity {
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private ViewPagerAdapter viewPagerAdapter;
-    private List<WidgetItem> listWidgetType;
+//    private List<WidgetItem> listWidgetType;
     private Button save;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,8 @@ public class TypeWidget extends AppCompatActivity {
     }
 
     private void setListWidgetType(List<WidgetItem> listWidget) {
-        ApplicationService.listWidgetType.clear();
+//        ApplicationService.listWidgetType.clear();
+        listWidget.clear();
         WidgetItem widget1;
         WidgetItem widget2;
         WidgetItem widget3;

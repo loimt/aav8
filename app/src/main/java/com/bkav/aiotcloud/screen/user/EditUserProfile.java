@@ -10,12 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
@@ -23,9 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,10 +35,7 @@ import android.widget.Toast;
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.main.SharePref;
 import com.bkav.aiotcloud.screen.setting.face.customer.SetTimeDialog;
-import com.bkav.aiotcloud.util.LanguageConfig;
-import com.bkav.aiotcloud.util.SharedPrefs;
 import com.bumptech.glide.Glide;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -56,7 +46,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class EditUserProfile extends AppCompatActivity {
     public static final String TAG = EditUserProfile.class.getName();
@@ -416,7 +405,7 @@ public class EditUserProfile extends AppCompatActivity {
                         updateImageThread.interrupt();
                     }
                     break;
-                case ApplicationService.MESSAGE_UPDATE_USERPROFILE_FAIL:
+                case ApplicationService.MESSAGE_UPDATE_FAIL:
                     try {
                         ApplicationService.showToast(LanguageManager.getInstance().getValue("update_userTime_fail"), true);
                     } catch (Exception e) {

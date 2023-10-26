@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
         GradientDrawable drawable = (GradientDrawable) holder.backgroud.getBackground();
         if (customerItem.getBackGroundColor() != null){
             drawable.setColor(Color.parseColor(customerItem.getBackGroundColor()));
+//            Log.e("color", customerItem.getBackGroundColor());
         }
 
         Glide.with(context)

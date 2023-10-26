@@ -24,15 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.config.DataChannelConfig;
-import com.bkav.aiotcloud.config.DateTimeFormat;
 import com.bkav.aiotcloud.entity.device.DeviceItem;
 import com.bkav.aiotcloud.language.LanguageManager;
 import com.bkav.aiotcloud.network.BrManager;
-import com.bkav.aiotcloud.screen.home.camera.FilterCamera;
-import com.bkav.aiotcloud.screen.home.camera.playback.Playback;
-import com.bkav.aiotcloud.screen.home.camera.setting.DayNightModeFragment;
-import com.bkav.aiotcloud.screen.home.camera.setting.ImageSettingFragment;
-import com.bkav.aiotcloud.screen.home.camera.setting.VideoSettingFragment;
 import com.bkav.bai.bridge.rtc.ClientHandler;
 import com.bkav.bai.bridge.rtc.CommonClientOptions;
 import com.bkav.bai.bridge.rtc.TrackStatReport;
@@ -41,7 +35,6 @@ import com.bkav.bai.bridge.rtc.WebRTCClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.webrtc.PeerConnection;
-import org.webrtc.SurfaceViewRenderer;
 
 public class GenneralInformation extends AppCompatActivity implements ClientHandler {
     public static final String ID = "id";
@@ -336,7 +329,7 @@ public class GenneralInformation extends AppCompatActivity implements ClientHand
                         ApplicationService.showToast(LanguageManager.getInstance().getValue("add_config_success"), false);
                         finish();
                         break;
-                    case ApplicationService.UPDATE_CAM_FAIL:
+                    case ApplicationService.UPDATE_CAM_FAILE:
                         ApplicationService.showToast(LanguageManager.getInstance().getValue("add_config_un_success"), true);
                         finish();
                         break;

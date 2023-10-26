@@ -7,6 +7,7 @@
     <string name="malay">Malaysia</string>
     <string name="english">English</string>
     <string name="user">Tài Khoản</string>
+    <string name="licenseDetect">Nhiện diện biển số</string>
     <string name="zoneInput">Nhập tên zone</string>
     <string name="hintInputfullname">Nhập họ và tên</string>
     <string name="editAva">Sửa</string>
@@ -23,10 +24,14 @@
     <string name="cameraSetting">Cấu hình camera</string>
     <string name="generalInfor">Thông tin chung</string>
     <string name="manageCustomer">Quản lý khách hàng</string>
+    <string name="manageGroupLicense">Quản lý nhóm biển số</string>
+    <string name="manageLicense">Quản lý biển số</string>
+    <string name="unknowFace">Khuôn mặt chưa xác định</string>
     <string name="manageTypeCustomer">Quản lý loại khách hàng</string>
     <string name="internetSetting">Cài đặt mạng</string>
     <string name="saveFile">Lưu trữ</string>
     <string name="version">Phiên bản</string>
+    <string name="groupLicense">Nhóm biển số</string>
     <string name="deviceChannel">Kênh thiết bị</string>
     <string name="groud">Groud</string>
     <string name="devices">Thiết bị</string>
@@ -96,6 +101,7 @@
     <string name="faceCustomer">Nhận diện khách hàng </string>
     <string name="typeCustomer">Phần loại đối tượng </string>
     <string name="filter">Bộ lọc</string>
+    <string name="unknown">Unknown</string>
     <string name="Interval">Khoảng thời gian </string>
     <string name="addNew">Thêm mới </string>
     <string name="profileInfo">Thông tin cá nhân</string>
@@ -123,6 +129,7 @@
     <string name="repeat">Lặp lại</string>
     <string name="timeWarning">Thời gian cảnh báo</string>
     <string name="content">Nội dung cảnh báo</string>
+    <string name="licenseTx">37G160769</string>
     <string name="title">Tiêu đề</string>
 
 
@@ -158,6 +165,7 @@
     <string name="logout">Đăng xuất</string>
     <string name="chooseImage">Chọn ảnh mẫu</string>
     <string name="fullName">Họ và tên</string>
+    <string name="license">Biển số</string>
     <string name="nameDevice">Tên thiết bị</string>
     <string name="branch">Chi nhánh</string>
     <string name="serialNumber">Số serial</string>
@@ -191,6 +199,8 @@
     <string name="peopleCode">Mã đối tượng</string>
     <string name="peopleCodeInput">Nhập mã đối tượng</string>
     <string name="peopleType">Loại đối tượng</string>
+    <string name="licenseType">Loại biển số</string>
+    <string name="vehicle">Loại phương tiện</string>
     <string name="textSize">Cỡ chữ</string>
     <string name="dateOfBirth">Ngày sinh</string>
     <string name="email">Email</string>

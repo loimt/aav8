@@ -1,9 +1,11 @@
 package com.bkav.aiotcloud.entity.customer;
 
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TypeCustomerItem {
+public class TypeCustomerItem implements TypeAIObject {
 
     public TypeCustomerItem(JSONObject customerItem) {
         try {
@@ -24,25 +26,25 @@ public class TypeCustomerItem {
     }
 
 
-    public int getCustomerTypeId() {
-        return customerTypeId;
-    }
+//    public int getCustomerTypeId() {
+//        return customerTypeId;
+//    }
 
     public void setCustomerTypeId(int customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
 
-    public String getCustomerTypeName() {
-        return customerTypeName;
-    }
+//    public String getCustomerTypeName() {
+//        return customerTypeName;
+//    }
 
     public void setCustomerTypeName(String customerTypeName) {
         this.customerTypeName = customerTypeName;
     }
 
-    public String getDescription() {
-        return description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -56,9 +58,9 @@ public class TypeCustomerItem {
         this.filePathBackGroundImage = filePathBackGroundImage;
     }
 
-    public String getBackGroundColor() {
-        return backGroundColor;
-    }
+//    public String getBackGroundColor() {
+//        return backGroundColor;
+//    }
 
     public void setBackGroundColor(String backGroundColor) {
         this.backGroundColor = backGroundColor;
@@ -88,9 +90,9 @@ public class TypeCustomerItem {
         this.objectGuid = objectGuid;
     }
 
-    public String getIdentity() {
-        return identity;
-    }
+//    public String getIdentity() {
+//        return identity;
+//    }
 
     public void setIdentity(String identity) {
         this.identity = identity;
@@ -102,6 +104,31 @@ public class TypeCustomerItem {
 
     public void setHanderTypeNotification(String handerTypeNotification) {
         this.handerTypeNotification = handerTypeNotification;
+    }
+
+    @Override
+    public int getID() {
+       return customerTypeId;
+    }
+
+    @Override
+    public String getName() {
+        return customerTypeName;
+    }
+
+    @Override
+    public String getBackground() {
+        return backGroundColor;
+    }
+
+    @Override
+    public String getDesciption() {
+        return description;
+    }
+
+    @Override
+    public String getIdentify() {
+        return identity;
     }
 
     public boolean isActive() {

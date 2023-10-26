@@ -47,7 +47,8 @@
     <item description="" key="camera_off_line" value="Camera's offline!" />
 
     <item description="" key="face_customer" value="Face recognition" />
-
+    <item description="" key="unknow_face" value="Unidentified Face ID" />
+    <item description="" key="unknow_face_name" value="Unknown face" />
     <item description="" key="intrusion_detect" value="Intrusion detection" />
     <item description="" key="fire_detect" value="Fire detect" />
     <item description="" key="lable_detect" value="License plate recognition" />
@@ -254,9 +255,11 @@
     <item description="" key="usa" value="USA" />
     <item description="" key="malaysia" value="Malaysia" />
 
-
+    <item description="" key="license_plate_list" value="License plate list" />
     <item description="" key="empty_name_object" value="You haven't enter object name" />
     <item description="" key="select_sample_image" value="Select sample image" />
+    <item description="" key="license_plate_number" value="License plate number" />
+    <item description="" key="delete_license_question" value="Are you sure you want to delete %s license plate?" />
     <item description="" key="code_object" value="Object code" />
     <item description="" key="input_code_object" value="Enter object code" />
     <item description="" key="email" value="email" />
@@ -266,7 +269,11 @@
     <item description="" key="note" value="Note" />
     <item description="" key="note_input" value="Enter note" />
     <item description="" key="content_access_detect" value="Intrusion detection at %s in %s" />
+    <item description="" key="license" value="License plate" />
+    <item description="" key="group_license" value="License plate group" />
+    <item description="" key="transportation" value="Transportation" />
 
+    <item description="" key="ai_license_content_format" value="License plate %s is detected at %s in %s" />
     <item description="" key="ai_fr_content_format" value= "%s - %s visit %s at %s" />
     <item description="" key="ai_fr_unknow_format" value="New Face ID detection visit %s at %s" />
     <item description="" key="face_id_list" value="Face ID list" />
@@ -275,6 +282,9 @@
     <item description="" key="manage_face" value="Face ID management" />
     <item description="" key="manage_face_group" value="Face ID group management" />
     <item description="" key="name_device_cannot_empty" value= "Device name cannot empty" />
+
+    <item description="" key="licenseplate_management" value="License plate management" />
+    <item description="" key="licenseplate_managementGroup" value="License plate group management" />
     <item description="" key="time_setting" value="Time Setting" />
     <item description="" key="date_and_time" value="Date and time" />
     <item description="" key="automatic_sync" value="Automatic sync" />

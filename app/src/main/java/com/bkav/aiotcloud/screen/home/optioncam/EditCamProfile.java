@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -35,8 +34,6 @@ import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.entity.region.Region;
 import com.bkav.aiotcloud.language.LanguageManager;
 import com.bkav.aiotcloud.screen.MainScreen;
-import com.bkav.aiotcloud.screen.user.notify_setting.DetailNotifySetting;
-import com.bkav.aiotcloud.screen.user.notify_setting.MyNodeViewFactory;
 import com.bkav.aiotcloud.util.MapIdentity;
 
 import org.json.JSONException;
@@ -302,7 +299,7 @@ public class EditCamProfile extends AppCompatActivity {
                     ApplicationService.requestManager.getListCam(ApplicationService.URL_GET_LIST_CAM, null, null, 1, 20, null);
                     startActivity(intent);
                     break;
-                case ApplicationService.UPDATE_CAM_FAIL:
+                case ApplicationService.UPDATE_CAM_FAILE:
                     ApplicationService.showToast("Lỗi update thông tin cam", true);
                     break;
             }

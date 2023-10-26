@@ -20,15 +20,18 @@ import com.bkav.aiotcloud.entity.UserItem;
 import com.bkav.aiotcloud.entity.aiobject.AIObject;
 import com.bkav.aiotcloud.entity.aiobject.CameraUnConfigItem;
 import com.bkav.aiotcloud.entity.aiobject.LanDevice;
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
 import com.bkav.aiotcloud.entity.customer.CustomerEvent;
 import com.bkav.aiotcloud.entity.customer.CustomerItem;
 import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
 import com.bkav.aiotcloud.entity.device.DeviceItem;
+import com.bkav.aiotcloud.entity.license.LicenseGroupItem;
+import com.bkav.aiotcloud.entity.license.LicenseItem;
+import com.bkav.aiotcloud.entity.license.LicenseTypeItem;
 import com.bkav.aiotcloud.entity.notify.NotifyItem;
 import com.bkav.aiotcloud.entity.notifySetting.NotifySettingItem;
 import com.bkav.aiotcloud.entity.region.Region;
 import com.bkav.aiotcloud.entity.widget.WidgetItem;
-import com.bkav.aiotcloud.main.SharePref;
 import com.bkav.aiotcloud.network.BrManager;
 import com.bkav.aiotcloud.network.RequestManager;
 import com.bkav.aiotcloud.network.VolleyRequestManagement;
@@ -64,9 +67,13 @@ public class ApplicationService extends MultiDexApplication {
     public static final String licenseplate = "licenseplate";
 
 
-    public static final String HOST = "https://baav.aiview.ai"; // product
-    public static final String CLIENT_ID = "61ceccdec7d895918a2f530f"; // product
-    public static final String URL_SOCKET = "https://sav.aiview.ai"; // product
+//    public static final String HOST = "https://baav.aiview.ai"; // product
+//    public static final String CLIENT_ID = "61ceccdec7d895918a2f530f"; // product
+//    public static final String URL_SOCKET = "https://sav.aiview.ai"; // product
+
+    public static final String HOST = "https://bapi.aiview.ai"; // on pr
+    public static final String CLIENT_ID = "64be4f35e7c33279a49bf01e"; // on pr
+    public static final String URL_SOCKET = "https://bsocket.aiview.ai"; // on pr
 
 //    public static final String HOST = "https://psapidev.hcdt.vn"; // dev
 //    public static final String CLIENT_ID = "612f533b4ea3809d6647ce97"; // dev
@@ -94,10 +101,7 @@ public class ApplicationService extends MultiDexApplication {
     public static final String URL_UPLOAD_IMAGE = HOST + "/api/customerservice/uploadImageByGuid";
     public static final String URL_UPLOAD_IMAGE_USERPROFILE = HOST + "/api/customerservice/uploadImageUser";
 
-
-
-
-
+    public static final String URL_UPLOAD_MOVE_IMAGE_UNKNOWN_CUSTOMER= HOST + "/api/profileservice/moveImageUnknowToCustomer";
 
     public static final String URL_ADD_UPDATE_CUSTOMER = HOST + "/api/customerservice/addOrUpdateCustomer";
 
@@ -133,6 +137,16 @@ public class ApplicationService extends MultiDexApplication {
     public static final String URL_DELETE_CAM = HOST + "/api/cameraservice/deleteCamera";
 
     public static final String URL_GET_CUSTOMER_EVENTS = HOST + "/api/customerservice/statisticsCustomerInfoIncoming";
+    public static final String URL_GET_LIST_LICENSE = HOST + "/api/LicensePlateservice/getListLicensePlate";
+
+    public static final String URL_GET_LIST_LICENSE_GROUP = HOST + "/api/LicensePlateservice/getListLicensePlateType?IsActive=%s&Identity=%s";
+
+    public static final String URL_GET_LIST_LICENSE_TYPE = HOST + "/api/eventservice/getDetectTypeByIdentity?identity=%s";
+
+    public static final String URL_ADD_UPDATE_LICENSE = HOST + "/api/LicensePlateservice/addOrUpdateLicensePlate";
+
+    public static final String URL_DELETE_LICENSE = HOST + "/api/LicensePlateservice/deleteLicensePlate?ObjectGuid=%s";
+
 
     public static final int LOGIN_SUCCESS = 0;
     public static final int LOGIN_FAIL = 1;
@@ -167,7 +181,7 @@ public class ApplicationService extends MultiDexApplication {
     public static final int LOGOUT_SUCCESS = 29;
     public static final int LOGOUT_FAIL = 30;
     public static final int MESSAGE_UPDATE_USERPROFILE_SUCCESS = 31;
-    public static final int MESSAGE_UPDATE_USERPROFILE_FAIL = 32;
+    public static final int MESSAGE_UPDATE_FAIL = 32;
     public static final int MESSAGE_UPLOAD_PHOTO_PROFILE_SUCESS = 33;
     public static final int MESSAGE_CHANGE_PASS_FAIL = 34;
     public static final int MESSAGE_CHANGE_PASS_SUCCESS = 35;
@@ -200,7 +214,7 @@ public class ApplicationService extends MultiDexApplication {
     public static final int REGISTER_CAM_SUCCESS = 62;
     public static final int REGISTER_CAM_FAIL = 63;
     public static final int UPDATE_CAM_SUCCESS = 64;
-    public static final int UPDATE_CAM_FAIL = 65;
+    public static final int UPDATE_CAM_FAILE = 65;
     public static final int GET_DISPLAY_INFO_SETTING = 66;
     public static final int DISPLAY_SETTING_CAMERA = 67;
     public static final int SET_INFO_VIDEO = 68;
@@ -228,6 +242,14 @@ public class ApplicationService extends MultiDexApplication {
     public static final int GET_LIST_ACCESS_DETECT_SUCESS = 84;
 
     public static final int GET_RECORD_JOB_PLAYBACK = 85;
+
+    public static final int GET_LIST_LICENSE_SUCCESS = 86;
+
+    public static final int GET_LIST_LICENSE_GROUP_SUCCESS = 87;
+
+    public static final int GET_LIST_LICENSE_TYPE_SUCCESS = 88;
+
+    public static final int ADD_UPDATE_LICENSE_SUCCESS = 89;
 
 
     public static int screenHeight;
@@ -325,12 +347,19 @@ public class ApplicationService extends MultiDexApplication {
     public static ArrayList<CameraItem> cameraitemsFilter;
     public static StatisticThread statisticThread;
     public static ArrayList<AIObject> cameraConfigs;
+
     public static ArrayList<CustomerItem> customerItems;
+
+    public static ArrayList<LicenseItem> licenseItems;
+
+    public static ArrayList<LicenseTypeItem> licenseTypeItems;
     public static ArrayList<CameraUnConfigItem> cameraUnConfigItems;
-    public static ArrayList<TypeCustomerItem> typeCustomerItems;
+    public static ArrayList<TypeAIObject> typeCustomerItems;
     public static ArrayList<NotifyItem> notifyItems;
     public static ArrayList<NotifySettingItem> notifySettingItems;
     public static ArrayList<Region> regions;
+
+    public static ArrayList<TypeAIObject> licenseGroupItems;
     public static ArrayList<LanDevice> listLanDevices;
     public static ArrayList<WidgetItem> listWidgetView, listWidget, listWidgetType;
     public static WidgetItem fariWidget, intrudWidget, fideWidget, pedeWidget, licenWidget, fariWidgetSpan, intrudWidgetSpan, fideWidgetSpan, pedeWidgetSpan, licenWidgetSpan;
@@ -351,19 +380,23 @@ public class ApplicationService extends MultiDexApplication {
         peerIceServers = new ArrayList<>();
         cameraConfigs = new ArrayList<>();
         cameraUnConfigItems = new ArrayList<>();
+        licenseTypeItems = new ArrayList<>();
         customerItems = new ArrayList<>();
         typeCustomerItems = new ArrayList<>();
+        licenseGroupItems = new ArrayList<>();
         notifyItems = new ArrayList<>();
         notifySettingItems = new ArrayList<>();
         regions = new ArrayList<>();
         listLanDevices = new ArrayList<>();
+        licenseItems = new ArrayList<>();
         DEVICE_ID = Secure.getString(getAppContext().getContentResolver(),
                 Secure.ANDROID_ID);
-        ;
+
         VERSION_NAME = BuildConfig.VERSION_NAME;
         VERSION_CODE = BuildConfig.VERSION_CODE;
         securityObject = new JSONObject();
         dataSettingCam = new JSONObject();
+
         initWidget();
 //        getStateWidget();
     }
@@ -375,10 +408,15 @@ public class ApplicationService extends MultiDexApplication {
         cameraConfigs.clear();
         cameraUnConfigItems.clear();
         customerItems.clear();
+        licenseItems.clear();
         typeCustomerItems.clear();
         notifyItems.clear();
         notifySettingItems.clear();
         listWidgetView.clear();
+        listWidget.clear();
+        listWidgetType.clear();
+        licenseItems.clear();
+        licenseGroupItems.clear();
         listCameraId = null;
         applicationId = null;
         TOKEN = null;
@@ -393,7 +431,8 @@ public class ApplicationService extends MultiDexApplication {
         screenWidth = displayMetrics.widthPixels;
     }
 
-    private void initWidget() {
+    public static void initWidget() {
+        Log.e("init wwidget", "");
         ApplicationService.fariWidget = new WidgetItem(ApplicationService.customerrecognize, 0, "", "", "0", false, 0, false, "", "", "", "");
         ApplicationService.intrudWidget = new WidgetItem(ApplicationService.accessdetect, 0, "", "", "0", false, 0, false, "", "", "", "");
         ApplicationService.fideWidget = new WidgetItem(ApplicationService.firedetect, 0, "", "", "0", false, 0, false, "", "", "", "");

@@ -171,6 +171,7 @@ public class ListCustomerActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
                 if (!recyclerView.canScrollVertically(1)) { //1 for down
                     currentPageIndex++;
+                    Log.e("license", currentPageIndex + "");
                     getListCustomerDefaul();
                 }
             }

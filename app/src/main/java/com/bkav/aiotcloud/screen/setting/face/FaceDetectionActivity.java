@@ -13,10 +13,8 @@ import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.language.LanguageManager;
 import com.bkav.aiotcloud.screen.setting.SettingFragment;
 import com.bkav.aiotcloud.screen.setting.face.customer.ListCustomerActivity;
-import com.bkav.aiotcloud.screen.setting.face.customer.ListTypeCustomer;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.bkav.aiotcloud.screen.setting.face.customer.ListTypeAI;
+import com.bkav.aiotcloud.screen.setting.face.unidenifiedface.UnidenifiedFaceActivity;
 
 
 public class FaceDetectionActivity  extends AppCompatActivity {
@@ -49,17 +47,24 @@ public class FaceDetectionActivity  extends AppCompatActivity {
     private RelativeLayout customerLayout;
     private RelativeLayout typeLayout;
 
+    private RelativeLayout unknowLayout;
+    private TextView unknowCustomerTx;
+
     private void init(){
         this.cameraSettingtx = findViewById(R.id.cameraSettingtx);
         this.manageCustomerTx = findViewById(R.id.manageCustomerTx);
-        this.manageTypeCustomerTx = findViewById(R.id.manageTypeCustomerTx);
+        this.manageTypeCustomerTx = findViewById(R.id.manageGroupLicenseTx);
         this.settingLayout = findViewById(R.id.settingLayout);
         this.customerLayout = findViewById(R.id.customerLayout);
         this.typeLayout = findViewById(R.id.typeLayout);
         this.title = findViewById(R.id.title);
         this.backIm = findViewById(R.id.backIm);
 
+        this.unknowLayout = findViewById(R.id.unknowLayout);
+        this.unknowCustomerTx = findViewById(R.id.unknowCustomerTx);
+
         this.cameraSettingtx.setText(LanguageManager.getInstance().getValue("list_ai_object"));
+        this.unknowCustomerTx.setText(LanguageManager.getInstance().getValue("unknow_face"));
         this.title.setText(LanguageManager.getInstance().getValue("face_recognize"));
         this.manageCustomerTx.setText(LanguageManager.getInstance().getValue("manage_face"));
         this.manageTypeCustomerTx.setText(LanguageManager.getInstance().getValue("manage_face_group"));
@@ -82,6 +87,14 @@ public class FaceDetectionActivity  extends AppCompatActivity {
             }
         });
 
+        this.unknowLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), UnidenifiedFaceActivity.class);
+                startActivity(intent);
+            }
+        });
+
         this.customerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +108,8 @@ public class FaceDetectionActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplication(), ListTypeCustomer.class);
+                Intent intent = new Intent(getApplication(), ListTypeAI.class);
+                intent.putExtra(ListTypeAI.PROFILE, ListTypeAI.FACE);
                 startActivity(intent);
             }
         });

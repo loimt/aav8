@@ -1,5 +1,5 @@
 {
-  "apiHost": "https://ppbs.aiview.ai:30004/p2p/api/v1",
+  "apiHost": "https://ppbs.aiview.ai/p2p/api/v1",
   "getCredentialHost":"",
   "getTokenHost": "",
   "auth": {

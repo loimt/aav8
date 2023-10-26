@@ -27,10 +27,9 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
 import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.screen.setting.face.StepThreeFragment;
-import com.bkav.aiotcloud.screen.setting.face.edit.InfoAIScreen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,15 +50,15 @@ public class DetailTypeObject extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        this.type = intent.getStringExtra(ListTypeCustomer.TYPE);
+        this.type = intent.getStringExtra(ListTypeAI.TYPE);
         setContentView(R.layout.type_object_detail);
         init();
         setDataLan();
         if (this.type.equals(ListCustomerActivity.EDIT)) {
-            this.typeCustomerItem = ApplicationService.typeCustomerItems.get(intent.getIntExtra(ListTypeCustomer.ID, 0));
+            this.typeCustomerItem = ApplicationService.typeCustomerItems.get(intent.getIntExtra(ListTypeAI.ID, 0));
             this.title.setText(LanguageManager.getInstance().getValue("edit"));
             setData();
-        } else if (type.equals(ListTypeCustomer.NEW)){
+        } else if (type.equals(ListTypeAI.NEW)){
             setCheckedColor(0);
             this.deleteIM.setVisibility(View.GONE);
             this.title.setText(LanguageManager.getInstance().getValue("add_new"));
@@ -87,36 +86,36 @@ public class DetailTypeObject extends AppCompatActivity {
 
     private void setData() {
 
-        this.nameInput.setText(this.typeCustomerItem.getCustomerTypeName());
-        this.descripInput.setText(this.typeCustomerItem.getDescription());
-        if (typeCustomerItem.getIdentity().contains("popup")) {
+        this.nameInput.setText(this.typeCustomerItem.getName());
+        this.descripInput.setText(this.typeCustomerItem.getDesciption());
+        if (typeCustomerItem.getIdentify().contains("popup")) {
             popupCheck.setChecked(true);
         }
 
-        if (typeCustomerItem.getIdentity().contains("sound")) {
+        if (typeCustomerItem.getIdentify().contains("sound")) {
             soundCheck.setChecked(true);
         }
 
-        if (typeCustomerItem.getIdentity().contains("flicker")) {
+        if (typeCustomerItem.getIdentify().contains("flicker")) {
             blinkCheck.setChecked(true);
         }
 
         swOnOffStatus.setChecked(typeCustomerItem.isActive());
 
-        Log.e(TAG, typeCustomerItem.getBackGroundColor());
+//        Log.e(TAG, typeCustomerItem.getBackGroundColor());
 
         for (String element : colors) {
             isBasic = false;
-            if (typeCustomerItem.getBackGroundColor().equalsIgnoreCase(element)) {
+            if (typeCustomerItem.getBackground().equalsIgnoreCase(element)) {
                 isBasic = true;
             }
         }
         if (!isBasic) {
-            colors.add(8, typeCustomerItem.getBackGroundColor());
+            colors.add(8, typeCustomerItem.getBackground());
         }
 
         for (int index = 0; index < colors.size(); index++) {
-            if (typeCustomerItem.getBackGroundColor().equalsIgnoreCase(colors.get(index))) {
+            if (typeCustomerItem.getBackground().equalsIgnoreCase(colors.get(index))) {
                 setCheckedColor(index);
             }
         }
@@ -124,7 +123,7 @@ public class DetailTypeObject extends AppCompatActivity {
         this.deleteIM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                @SuppressLint("DefaultLocale") String url = String.format(ApplicationService.URL_DELETE_TYPE_CUSTOMER, typeCustomerItem.getCustomerTypeId());
+                @SuppressLint("DefaultLocale") String url = String.format(ApplicationService.URL_DELETE_TYPE_CUSTOMER, typeCustomerItem.getID());
                 ApplicationService.requestManager.deleteTypeCustomer(url);
             }
         });
@@ -202,6 +201,7 @@ public class DetailTypeObject extends AppCompatActivity {
 
     }
 
+    private String currentProfile = "";
     private RelativeLayout c1;
     private RelativeLayout c2;
     private RelativeLayout c3;
@@ -224,7 +224,7 @@ public class DetailTypeObject extends AppCompatActivity {
     private RelativeLayout selectColor;
     private ImageView add;
     private String type;
-    private TypeCustomerItem typeCustomerItem;
+    private TypeAIObject typeCustomerItem;
     private boolean isBasic = false;
 
     private TextView title;
@@ -282,7 +282,11 @@ public class DetailTypeObject extends AppCompatActivity {
             this.selectColor.setVisibility(View.VISIBLE);
             this.selectColor.setBackgroundResource(R.drawable.retangcle);
             GradientDrawable drawable = (GradientDrawable) this.selectColor.getBackground();
-            drawable.setColor(Color.parseColor(colors.get(position)));
+            try {
+                drawable.setColor(Color.parseColor(colors.get(position)));
+            } catch (Exception e){
+
+            }
         }
     }
 
@@ -308,8 +312,8 @@ public class DetailTypeObject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplication(), SetColorDialog.class);
                 intent.setFlags(0);
-                if (type.equals(ListTypeCustomer.EDIT)) {
-                    intent.putExtra(SetColorDialog.COLOR, typeCustomerItem.getBackGroundColor());
+                if (type.equals(ListTypeAI.EDIT)) {
+                    intent.putExtra(SetColorDialog.COLOR, typeCustomerItem.getBackground());
                 } else {
                     intent.putExtra(SetColorDialog.COLOR, "#ffffff");
                 }
@@ -348,18 +352,19 @@ public class DetailTypeObject extends AppCompatActivity {
             handerTypeNotification.put("sound");
         }
         try {
-            if (type.equals(ListTypeCustomer.NEW)) {
-                payload.put("customerTypeId", 0);
-            } else if (type.equals(ListTypeCustomer.EDIT)) {
-                payload.put("customerTypeId", typeCustomerItem.getCustomerTypeId());
-                payload.put("isUnknow", typeCustomerItem.isUnknow());
-            }
             payload.put("backGroundColor", colors.get(currentBackground));
             payload.put("customerTypeName", nameInput.getText());
             payload.put("description", descripInput.getText());
             payload.put("filePathBackGroundImage", "string");
             payload.put("handerTypeNotification", handerTypeNotification);
             payload.put("active", swOnOffStatus.isChecked());
+            if (type.equals(ListTypeAI.NEW)) {
+                payload.put("customerTypeId", 0);
+            } else if (type.equals(ListTypeAI.EDIT)) {
+                payload.put("customerTypeId", typeCustomerItem.getID());
+                if (currentProfile.equals(ListTypeAI.FACE))
+                payload.put("isUnknow", ((TypeCustomerItem) typeCustomerItem).isUnknow());
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -374,7 +379,7 @@ public class DetailTypeObject extends AppCompatActivity {
                 case ApplicationService.ADD_UPDATE_TYPE_CUSTOMER_SUCCESS:
                     ApplicationService.showToast(LanguageManager.getInstance().getValue("add_config_success"), false);
                     Intent dataBack = new Intent();
-                    dataBack.putExtra(ListCustomerActivity.TYPE, ListTypeCustomer.EDIT);
+                    dataBack.putExtra(ListCustomerActivity.TYPE, ListTypeAI.EDIT);
                     setResult(RESULT_OK, dataBack);
                     finish();
                     break;
@@ -386,7 +391,7 @@ public class DetailTypeObject extends AppCompatActivity {
                 case ApplicationService.DELETE_SUCCESS:
                     ApplicationService.showToast(LanguageManager.getInstance().getValue("add_config_success"), false);
                     Intent datadelete = new Intent();
-                    datadelete.putExtra(ListCustomerActivity.TYPE, ListTypeCustomer.EDIT);
+                    datadelete.putExtra(ListCustomerActivity.TYPE, ListTypeAI.EDIT);
                     setResult(RESULT_OK, datadelete);
                     finish();
             }

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -32,8 +31,6 @@ import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.language.LanguageManager;
 import com.bkav.aiotcloud.config.DataChannelConfig;
-import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.screen.setting.face.customer.ListTypeCustomer;
 import com.bkav.aiotcloud.screen.setting.face.customer.SetColorDialog;
 
 import org.json.JSONArray;

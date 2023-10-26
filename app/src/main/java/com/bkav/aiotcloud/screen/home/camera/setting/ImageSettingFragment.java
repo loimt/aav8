@@ -112,16 +112,26 @@ public class ImageSettingFragment extends Fragment {
 
     public void setMinMax(JSONObject jsonObject){
         try {
-            Log.e("option", jsonObject.toString());
-            this.sbBrightness.setMax(jsonObject.getJSONObject("brightness").getInt("max"));
-            this.sbContrast.setMax(jsonObject.getJSONObject("contrast").getInt("max"));
-            this.sbDefinition.setMax(jsonObject.getJSONObject("sharpness").getInt("max"));
-            this.sbSaturation.setMax(jsonObject.getJSONObject("colorSaturation").getInt("max"));
+//            Log.e("option", jsonObject.toString());
+            if (!jsonObject.isNull("brightness")){
+                this.sbBrightness.setMax(jsonObject.getJSONObject("brightness").getInt("max"));
+                this.sbBrightness.setMin(jsonObject.getJSONObject("brightness").getInt("min"));
+            }
+            if (!jsonObject.isNull("contrast")){
+                this.sbContrast.setMax(jsonObject.getJSONObject("contrast").getInt("max"));
+                this.sbContrast.setMin(jsonObject.getJSONObject("contrast").getInt("min"));
+            }
 
-            this.sbBrightness.setMin(jsonObject.getJSONObject("brightness").getInt("min"));
-            this.sbContrast.setMin(jsonObject.getJSONObject("contrast").getInt("min"));
-            this.sbDefinition.setMin(jsonObject.getJSONObject("sharpness").getInt("min"));
-            this.sbSaturation.setMin(jsonObject.getJSONObject("colorSaturation").getInt("min"));
+            if (!jsonObject.isNull("sharpness")){
+                this.sbDefinition.setMin(jsonObject.getJSONObject("sharpness").getInt("min"));
+                this.sbDefinition.setMax(jsonObject.getJSONObject("sharpness").getInt("max"));
+            }
+
+            if (!jsonObject.isNull("colorSaturation")){
+                this.sbSaturation.setMax(jsonObject.getJSONObject("colorSaturation").getInt("max"));
+                this.sbSaturation.setMin(jsonObject.getJSONObject("colorSaturation").getInt("min"));
+            }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -130,13 +140,15 @@ public class ImageSettingFragment extends Fragment {
 
     public void updateUI(JSONObject json){
         try {
-            Log.e(TAG, json.toString());
+            Log.e("response webrtc", json.toString());
             if (cameraItem.getBoxId() != 0){
-                this.contrast = json.getInt("contrast");
-                if (this.sbContrast == null) {
-                    return;
+                if (!json.isNull("contrast")){
+                    this.contrast = json.getInt("contrast");
+                    if (this.sbContrast == null) {
+                        return;
+                    }
+                    this.sbContrast.setProgress(this.contrast);
                 }
-                this.sbContrast.setProgress(this.contrast);
                 this.txValueContrast.setText(String.valueOf(this.contrast));
 
 

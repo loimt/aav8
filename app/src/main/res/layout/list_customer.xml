@@ -35,22 +35,12 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/addIM"-->
-        <!--            android:layout_width="@dimen/_15sdp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_alignParentEnd="true"-->
-        <!--            android:layout_centerInParent="true"-->
-        <!--            android:layout_marginEnd="@dimen/_10sdp"-->
-        <!--            android:src="@drawable/add_icon" />-->
-
         <RelativeLayout
             android:id="@+id/filter"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:layout_alignParentEnd="true">
+            android:layout_alignParentEnd="true"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/filterIm"
@@ -89,25 +79,23 @@
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
         android:layout_alignParentEnd="true"
-        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:src="@drawable/add_item" />
+        android:src="@drawable/add_item"
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:visibility="gone"
         android:layout_centerInParent="true"
-        android:indeterminateTint="@color/mainColor"
         android:layout_marginTop="20dp"
+        android:indeterminateTint="@color/mainColor"
         android:max="3"
-        android:progress="100" />
-
-
+        android:progress="100"
+        android:visibility="gone" />
 
 
 </RelativeLayout>

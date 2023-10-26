@@ -1,10 +1,12 @@
 package com.bkav.aiotcloud.screen.setting.face.customer;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,6 +14,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.FileUtils;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -44,12 +48,14 @@ import androidx.core.content.ContextCompat;
 import com.bkav.aiotcloud.R;
 import com.bkav.aiotcloud.application.ApplicationService;
 import com.bkav.aiotcloud.config.DateTimeFormat;
+import com.bkav.aiotcloud.entity.aiobject.TypeAIObject;
 import com.bkav.aiotcloud.entity.customer.TypeCustomerItem;
 import com.bkav.aiotcloud.language.LanguageManager;
-import com.bkav.aiotcloud.main.SharePref;
-import com.bkav.aiotcloud.screen.LoginActiviry;
+import com.bkav.aiotcloud.network.VolleyRequestManagement;
 import com.bkav.aiotcloud.screen.setting.face.historyObject.ListDates;
+import com.bkav.aiotcloud.screen.setting.face.unidenifiedface.UnidenifiedFaceActivity;
 import com.bumptech.glide.Glide;
+import com.google.gson.JsonArray;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -57,9 +63,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -93,16 +107,24 @@ public class AddCustomerActivity extends AppCompatActivity {
             this.position = getIntent().getIntExtra(ListCustomerActivity.ID, -1);
             @SuppressLint("DefaultLocale") String url = String.format(ApplicationService.URL_GET_DETAIL_INFOR_CUSTOMER, ApplicationService.customerItems.get(position).getCustomerId());
             ApplicationService.requestManager.getDetailCustomer(url);
-        } else {
+        } else if (this.type.equals(ListCustomerActivity.NEW)) {
             this.dateOfBirthValue.setHint(LanguageManager.getInstance().getValue("hint_date_of_birth"));
             this.deleteIM.setVisibility(View.GONE);
             this.title.setText(LanguageManager.getInstance().getValue("add_new"));
+            this.codePeopleInput.setText(generateString("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 20));
+        } else {
+            this.position = getIntent().getIntExtra(ListCustomerActivity.ID, -1);
+            this.dateOfBirthValue.setHint(LanguageManager.getInstance().getValue("hint_date_of_birth"));
+            this.deleteIM.setVisibility(View.GONE);
+            this.title.setText(LanguageManager.getInstance().getValue("add_new"));
+            Glide.with(this).load(ApplicationService.customerItems.get(position).getAvatarFilePath()).circleCrop().into(avatar);
             this.codePeopleInput.setText(generateString("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 20));
         }
         action();
 
         setAdapter();
     }
+
 
     @Override
     protected void onResume() {
@@ -123,7 +145,6 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     private List<String> listType = new ArrayList<>();
     private List<String> listSex = new ArrayList<>();
-
 
 
     private ImageView avatar;
@@ -233,9 +254,9 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     private void getTypeCustomer() {
         try {
-            for (TypeCustomerItem typeCustomerItem : ApplicationService.typeCustomerItems) {
-                if (typeCustomerItem.getCustomerTypeId() == editItem.getInt("customerTypeId")) {
-                    spinnerType.setSelection(listType.indexOf(typeCustomerItem.getCustomerTypeName()));
+            for (TypeAIObject typeCustomerItem : ApplicationService.typeCustomerItems) {
+                if (typeCustomerItem.getID() == editItem.getInt("customerTypeId")) {
+                    spinnerType.setSelection(listType.indexOf(typeCustomerItem.getName()));
                 }
             }
         } catch (JSONException e) {
@@ -397,9 +418,9 @@ public class AddCustomerActivity extends AppCompatActivity {
     }
 
     private void getListStyleName() {
-        for (TypeCustomerItem typeCustomerItem : ApplicationService.typeCustomerItems) {
-            if (!typeCustomerItem.isUnknow()) {
-                listType.add(typeCustomerItem.getCustomerTypeName());
+        for (TypeAIObject typeCustomerItem : ApplicationService.typeCustomerItems) {
+            if (!((TypeCustomerItem) typeCustomerItem).isUnknow()) {
+                listType.add(typeCustomerItem.getName());
             }
         }
     }
@@ -560,13 +581,13 @@ public class AddCustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Log.e(TAG, listImageDelete.toString());
-                if (fullnameInput.getText().length() == 0){
+                if (fullnameInput.getText().length() == 0) {
                     ApplicationService.showToast(LanguageManager.getInstance().getValue("er_empty_name"), true);
                     return;
                 }
-                if (type.equals(ListCustomerActivity.NEW)) {
+                if (!type.equals(ListCustomerActivity.EDIT)) {
                     ApplicationService.requestManager.addUpdateCustomer(getPayload(new JSONObject()), ApplicationService.URL_ADD_UPDATE_CUSTOMER);
-                } else if (type.equals(ListCustomerActivity.EDIT)) {
+                } else {
                     if (editItem != null) {
                         ApplicationService.requestManager.addUpdateCustomer(getPayload(editItem), ApplicationService.URL_ADD_UPDATE_CUSTOMER);
                     }
@@ -623,9 +644,9 @@ public class AddCustomerActivity extends AppCompatActivity {
     }
 
     private TypeCustomerItem getCustomerTypeID(String name) {
-        for (TypeCustomerItem typeCustomerItem : ApplicationService.typeCustomerItems) {
-            if (typeCustomerItem.getCustomerTypeName().equals(name)) {
-                return typeCustomerItem;
+        for (TypeAIObject typeCustomerItem : ApplicationService.typeCustomerItems) {
+            if (typeCustomerItem.getName().equals(name)) {
+                return (TypeCustomerItem)typeCustomerItem;
             }
         }
         return null;
@@ -634,7 +655,7 @@ public class AddCustomerActivity extends AppCompatActivity {
     private JSONObject getPayload(JSONObject payload) {
         try {
             payload.put("fullName", Objects.requireNonNull(fullnameInput.getText().toString()));
-            payload.put("customerTypeId", Objects.requireNonNull(getCustomerTypeID(listType.get(positionTypeSelected))).getCustomerTypeId());
+            payload.put("customerTypeId", Objects.requireNonNull(getCustomerTypeID(listType.get(positionTypeSelected))).getID());
             payload.put("ownerByUserId", Objects.requireNonNull(getCustomerTypeID(listType.get(positionTypeSelected))).getOwnerByUserId());
             payload.put("code", codePeopleInput.getText().toString());
             if (time.length() == 0) {
@@ -704,6 +725,27 @@ public class AddCustomerActivity extends AppCompatActivity {
         updateImageThread.start();
     }
 
+    private void addCustomerFromUnkow(JSONObject customerJson) {
+        JSONObject payload = new JSONObject();
+        try {
+            payload.put("customerId", customerJson.getInt("profileId"));
+            JSONArray listEvent = new JSONArray();
+            for (int index =0; index <3; index++){
+                JSONObject evenItem = new JSONObject();
+                evenItem.put("eventId", ApplicationService.customerItems.get(position).getEventId());
+                evenItem.put("pathImage", ApplicationService.customerItems.get(position).getAvatarFilePath());
+                evenItem.put("imageType", index);
+                listEvent.put(evenItem);
+            }
+            payload.put("listImage", listEvent);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        ApplicationService.volleyRequestManagement.moveImageToUnknownCustomer(payload, ApplicationService.URL_UPLOAD_MOVE_IMAGE_UNKNOWN_CUSTOMER);
+    }
+
     private void openLogoutDialog() {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -746,13 +788,14 @@ public class AddCustomerActivity extends AppCompatActivity {
             switch (message.what) {
                 case ApplicationService.MESSAGE_UPLOAD_PHOTO_SUCESS:
                     ApplicationService.showToast(LanguageManager.getInstance().getValue("add_config_success"), false);
-                    if (updateImageThread != null) {
-                        updateImageThread.interrupt();
+                    if (!type.equals(UnidenifiedFaceActivity.UNKNOW)){
+                        if (updateImageThread != null) {
+                            updateImageThread.interrupt();
+                        }
+                        Intent dataBack = new Intent();
+                        dataBack.putExtra(ListCustomerActivity.TYPE, ListCustomerActivity.EDIT);
+                        setResult(RESULT_OK, dataBack);
                     }
-
-                    Intent dataBack = new Intent();
-                    dataBack.putExtra(ListCustomerActivity.TYPE, ListCustomerActivity.EDIT);
-                    setResult(RESULT_OK, dataBack);
                     finish();
                     break;
                 case ApplicationService.DELETE_SUCCESS:
@@ -774,7 +817,11 @@ public class AddCustomerActivity extends AppCompatActivity {
                     String dataItem = (String) message.obj;
                     try {
                         JSONObject customerItem = new JSONObject(dataItem);
-                        uploadImage(customerItem);
+                        if (type.equals(UnidenifiedFaceActivity.UNKNOW)){
+                            addCustomerFromUnkow(customerItem);
+                        } else {
+                            uploadImage(customerItem);
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -784,8 +831,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                     try {
                         editItem = new JSONObject((String) message.obj);
                         setDataEdit(editItem);
-
-                        Log.e(TAG, editItem.toString());
+//                        Log.e(TAG, editItem.toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
